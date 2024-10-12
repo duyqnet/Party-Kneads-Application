@@ -34,7 +34,7 @@
         android:id="@+id/btnFinish"
         android:layout_width="225dp"
         android:layout_height="50dp"
-        android:background="@drawable/roundbutton"
+        android:backgroundTint="@color/pink"
         android:fontFamily="@font/montserrat_bold"
         android:text="Get Started"
         android:focusable="true"

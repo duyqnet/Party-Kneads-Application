@@ -100,6 +100,7 @@
         android:layout_width="274dp"
         android:layout_height="66dp"
         android:fontFamily="@font/montserrat_semibold"
+        android:textColor="@color/semiblack"
         android:text="Let us know your location for fast and accurate cake and party supply delivery."
         android:textAlignment="center"
         android:textSize="18sp"

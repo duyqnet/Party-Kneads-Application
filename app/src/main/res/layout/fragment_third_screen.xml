@@ -101,6 +101,7 @@
         android:layout_width="285dp"
         android:layout_height="88dp"
         android:fontFamily="@font/montserrat_semibold"
+        android:textColor="@color/semiblack"
         android:text="We Guarantee Your Cakes and Party Supplies Will Arrive Fresh, Safe, and Right on Time!"
         android:textAlignment="center"
         android:textSize="18sp"
