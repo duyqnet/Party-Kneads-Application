@@ -10,4 +10,5 @@
     <color name="pinkContainer">#f4d3de</color>
     <color name="pinkContOpacity">#B3f4d3de</color>
     <color name="darkpink">#ec4169</color>
+    <color name="grey">#737373</color>
 </resources>

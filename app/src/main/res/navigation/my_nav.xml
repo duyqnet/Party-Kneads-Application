@@ -34,5 +34,54 @@
         android:id="@+id/loginFragment"
         android:name="com.ignacio.partykneadsapp.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_termsFragment2"
+            app:destination="@id/termsFragment2" />
+        <action
+            android:id="@+id/action_loginFragment_to_homePageFragment"
+            app:destination="@id/homePageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/termsFragment2"
+        android:name="com.ignacio.partykneadsapp.TermsFragment"
+        android:label="TermsFragment" >
+        <action
+            android:id="@+id/action_termsFragment2_to_personaldetailsFragment"
+            app:destination="@id/personaldetailsFragment" />
+        <action
+            android:id="@+id/action_termsFragment2_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/personaldetailsFragment"
+        android:name="com.ignacio.partykneadsapp.personaldetailsFragment"
+        android:label="personaldetailsFragment" >
+        <action
+            android:id="@+id/action_personaldetailsFragment_to_createAccountFragment4"
+            app:destination="@id/createAccountFragment4" />
+        <action
+            android:id="@+id/action_personaldetailsFragment_to_termsFragment2"
+            app:destination="@id/termsFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/createAccountFragment4"
+        android:name="com.ignacio.partykneadsapp.CreateAccountFragment"
+        android:label="CreateAccountFragment" >
+        <action
+            android:id="@+id/action_createAccountFragment4_to_homePageFragment"
+            app:destination="@id/homePageFragment" />
+        <action
+            android:id="@+id/action_createAccountFragment4_to_personaldetailsFragment"
+            app:destination="@id/personaldetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homePageFragment"
+        android:name="com.ignacio.partykneadsapp.HomePageFragment"
+        android:label="fragment_home_page"
+        tools:layout="@layout/fragment_home_page" >
+        <action
+            android:id="@+id/action_homePageFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
 </navigation>

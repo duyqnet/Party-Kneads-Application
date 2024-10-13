@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/babypink"
-    tools:context=".onboarding.screens.ThirdScreen">
+    tools:context=".onboarding.screens.SecondScreen">
 
 
     <ImageView
-        android:id="@+id/imageView8"
+        android:id="@+id/imageView3"
         android:layout_width="match_parent"
         android:layout_height="405dp"
         android:src="@drawable/onboarding2"
@@ -33,30 +33,17 @@
         android:textAlignment="textEnd"
         android:textColor="@color/darkpink"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView8"
+        app:layout_constraintBottom_toTopOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
-
-    <ImageView
-        android:id="@+id/imageView11"
-        android:layout_width="188dp"
-        android:layout_height="34dp"
-        android:src="@drawable/dot3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.69" />
-
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
-        android:layout_height="205dp"
+        android:layout_height="284dp"
         android:layout_marginBottom="-20dp"
         android:background="@drawable/rectanglecont"
         android:textAlignment="center"
@@ -64,8 +51,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView8"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
         app:layout_constraintVertical_bias="0.92" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="188dp"
+        android:layout_height="34dp"
+        android:src="@drawable/dot3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.079" />
 
     <ImageView
         android:id="@+id/imageView6"
@@ -94,22 +93,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textView3"
         app:layout_constraintTop_toTopOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.14" />
+        app:layout_constraintVertical_bias="0.185" />
 
     <TextView
         android:id="@+id/textView6"
-        android:layout_width="285dp"
-        android:layout_height="88dp"
-        android:fontFamily="@font/montserrat_semibold"
-        android:textColor="@color/semiblack"
+        android:layout_width="276dp"
+        android:layout_height="97dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/montserrat_medium"
         android:text="We Guarantee Your Cakes and Party Supplies Will Arrive Fresh, Safe, and Right on Time!"
         android:textAlignment="center"
+        android:textColor="@color/semiblack"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/textView3"
+        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="@+id/textView3"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.931" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.125" />
 
     <ImageView
         android:id="@+id/btnNext"
@@ -118,9 +119,9 @@
         android:src="@drawable/next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.957"
+        app:layout_constraintHorizontal_bias="0.927"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.892" />
+        app:layout_constraintVertical_bias="0.843" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
