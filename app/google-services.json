@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "839073691480",
+    "project_id": "party-kneads-firebase",
+    "storage_bucket": "party-kneads-firebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:839073691480:android:7177dcbbb4a94d853a572d",
+        "android_client_info": {
+          "package_name": "com.ignacio.partykneadsapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAA6AMo2-E_ZXCDV-iQBy3S9s5Wlt7bQ9M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

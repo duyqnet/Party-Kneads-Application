@@ -96,15 +96,15 @@ public class CreateAccountFragment extends Fragment {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
 
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(getActivity(), "Account created successfully.", Toast.LENGTH_SHORT).show();
+//                                if (task.isSuccessful()) {
+//                                    Toast.makeText(getActivity(), "Account created successfully.", Toast.LENGTH_SHORT).show();
                                     // Navigate to next screen or perform other actions
                                     NavController navController = Navigation.findNavController(view);
-                                    navController.navigate(R.id.action_createAccountFragment4_to_homePageFragment);
-                                } else {
-                                    Toast.makeText(getActivity(), "Authentication failed.", Toast.LENGTH_SHORT).show();
+                                    navController.navigate(R.id.action_createAccountFragment4_to_OTPFragment2);
+//                                } else {
+//                                    Toast.makeText(getActivity(), "Authentication failed.", Toast.LENGTH_SHORT).show();
                                 }
-                            }
+//                            }
                         });
             }
         });

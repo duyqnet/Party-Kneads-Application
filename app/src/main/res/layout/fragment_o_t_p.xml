@@ -170,12 +170,13 @@
         app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
 
     <Button
-        android:id="@+id/submitOTP"
+        android:id="@+id/btnsubmitOTP"
         android:layout_width="350dp"
         android:layout_height="66dp"
         android:layout_marginBottom="312dp"
         android:backgroundTint="@color/pink"
         android:fontFamily="@font/montserrat_bold"
+        android:onClick="otpSubmit"
         android:text="Submit"
         android:textColor="@color/semiwhite"
         android:textSize="18dp"
