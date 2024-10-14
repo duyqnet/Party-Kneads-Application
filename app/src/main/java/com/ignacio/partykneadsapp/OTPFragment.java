@@ -33,5 +33,5 @@ public class OTPFragment extends Fragment {
     public void otpSubmit(View view) {
         NavController navController = Navigation.findNavController(view);
         navController.navigate(R.id.action_OTPFragment_to_homePageFragment);
-}
+    }
 }
