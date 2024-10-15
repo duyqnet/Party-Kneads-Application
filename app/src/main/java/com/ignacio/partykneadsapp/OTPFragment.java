@@ -151,8 +151,6 @@ public class OTPFragment extends Fragment {
 
         new JavaMailSender(email, subject, message).execute(); // Send email
 
-        // Display the OTP for debugging purposes
-        Toast.makeText(getActivity(), "Your OTP is: " + random, Toast.LENGTH_SHORT).show();
     }
 
     private abstract class SimpleTextWatcher implements TextWatcher {
