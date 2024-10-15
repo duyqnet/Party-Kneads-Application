@@ -22,31 +22,23 @@ import androidx.navigation.Navigation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CreateAccountFragment extends Fragment {
 
-    TextInputEditText etPassCA, etEmailCA;
-    Button btnCont;
-    FirebaseAuth mAuth;
-    TextView btnBack;
-    ConstraintLayout cl;
+    private TextInputEditText etPassCA, etEmailCA;
+    private Button btnCont;
+    private FirebaseAuth mAuth;
+    private TextView btnBack;
+    private ConstraintLayout cl;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mAuth = FirebaseAuth.getInstance();
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        checkIfUserIsVerified();
     }
 
     @Override
@@ -67,7 +59,7 @@ public class CreateAccountFragment extends Fragment {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavController navController = Navigation.findNavController(view);
+                NavController navController = Navigation.findNavController(requireView());
                 navController.navigate(R.id.action_createAccountFragment4_to_personaldetailsFragment);
             }
         });
@@ -75,7 +67,7 @@ public class CreateAccountFragment extends Fragment {
         btnCont.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email = etEmailCA.getText().toString();
+                String email = etEmailCA.getText().toString().trim();
                 String password = etPassCA.getText().toString();
 
                 if (TextUtils.isEmpty(email)) {
@@ -91,23 +83,15 @@ public class CreateAccountFragment extends Fragment {
                 if (!isStrongPassword(password)) {
                     Toast.makeText(getActivity(), "Weak password! Must include:\n- At least one uppercase letter\n- At least one lowercase letter\n- At least one number\n- At least one special character", Toast.LENGTH_LONG).show();
                     return;
-                }
+                } else {
+                    // Proceed to OTP Fragment
+                    Bundle bundle = new Bundle();
+                    bundle.putString("email", email);
+                    bundle.putString("password", password);
 
-                // Create user with email and password using Firebase Auth
-                mAuth.createUserWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    FirebaseUser user = mAuth.getCurrentUser();
-                                    if (user != null) {
-                                        sendVerificationLink(user);
-                                    }
-                                } else {
-                                    Toast.makeText(getActivity(), "Account creation failed.", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
+                    NavController navController = Navigation.findNavController(requireView());
+                    navController.navigate(R.id.action_createAccountFragment4_to_OTPFragment, bundle);
+                }
             }
         });
 
@@ -118,31 +102,6 @@ public class CreateAccountFragment extends Fragment {
                 inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
             }
         });
-    }
-
-    private void sendVerificationLink(FirebaseUser user) {
-        user.sendEmailVerification()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        Toast.makeText(getActivity(), "Verification link sent to " + user.getEmail(), Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(getActivity(), "Failed to send verification link.", Toast.LENGTH_SHORT).show();
-                    }
-                });
-    }
-
-    private void checkIfUserIsVerified() {
-        FirebaseUser user = mAuth.getCurrentUser();
-        if (user != null) {
-            user.reload().addOnCompleteListener(task -> {
-                if (task.isSuccessful()) {
-                    if (user.isEmailVerified()) {
-                        NavController navController = Navigation.findNavController(requireView());
-                        navController.navigate(R.id.action_createAccountFragment4_to_homePageFragment);
-                    }
-                }
-            });
-        }
     }
 
     private boolean isStrongPassword(String password) {

@@ -53,7 +53,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <EditText
-        android:id="@+id/etOTP1"
+        android:id="@+id/otp1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginLeft="15dp"
@@ -67,14 +67,14 @@
         android:textAlignment="center"
         android:textColor="@color/darkpink"
         android:textSize="18dp"
-        app:layout_constraintEnd_toStartOf="@+id/etOTP2"
+        app:layout_constraintEnd_toStartOf="@+id/otp2"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
 
 
     <EditText
-        android:id="@+id/etOTP2"
+        android:id="@+id/otp2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="60dp"
@@ -87,13 +87,13 @@
         android:textAlignment="center"
         android:textColor="@color/darkpink"
         android:textSize="18dp"
-        app:layout_constraintEnd_toStartOf="@+id/etOTP3"
+        app:layout_constraintEnd_toStartOf="@+id/otp3"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/etOTP1"
+        app:layout_constraintStart_toEndOf="@+id/otp1"
         app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
 
     <EditText
-        android:id="@+id/etOTP3"
+        android:id="@+id/otp3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="60dp"
@@ -106,13 +106,13 @@
         android:textAlignment="center"
         android:textColor="@color/darkpink"
         android:textSize="18dp"
-        app:layout_constraintEnd_toStartOf="@+id/etOTP4"
+        app:layout_constraintEnd_toStartOf="@+id/otp4"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/etOTP2"
+        app:layout_constraintStart_toEndOf="@+id/otp2"
         app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
 
     <EditText
-        android:id="@+id/etOTP4"
+        android:id="@+id/otp4"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="60dp"
@@ -125,13 +125,13 @@
         android:textAlignment="center"
         android:textColor="@color/darkpink"
         android:textSize="18dp"
-        app:layout_constraintEnd_toStartOf="@+id/etOTP5"
+        app:layout_constraintEnd_toStartOf="@+id/otp5"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/etOTP3"
+        app:layout_constraintStart_toEndOf="@+id/otp3"
         app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
 
     <EditText
-        android:id="@+id/etOTP5"
+        android:id="@+id/otp5"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="60dp"
@@ -144,13 +144,13 @@
         android:textAlignment="center"
         android:textColor="@color/darkpink"
         android:textSize="18dp"
-        app:layout_constraintEnd_toStartOf="@+id/etOTP6"
+        app:layout_constraintEnd_toStartOf="@+id/otp6"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/etOTP4"
+        app:layout_constraintStart_toEndOf="@+id/otp4"
         app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
 
     <EditText
-        android:id="@+id/etOTP6"
+        android:id="@+id/otp6"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="60dp"
@@ -166,7 +166,7 @@
         android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/etOTP5"
+        app:layout_constraintStart_toEndOf="@+id/otp5"
         app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
 
     <Button
@@ -198,7 +198,7 @@
         android:textColor="@color/grey"
         android:textSize="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etOTP4" />
+        app:layout_constraintTop_toBottomOf="@+id/otp4" />
 
     <TextView
         android:id="@+id/btnResend"
@@ -212,6 +212,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.151"
         app:layout_constraintStart_toEndOf="@+id/tvcode"
-        app:layout_constraintTop_toBottomOf="@+id/etOTP4" />
+        app:layout_constraintTop_toBottomOf="@+id/otp4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

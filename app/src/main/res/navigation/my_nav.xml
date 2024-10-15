@@ -68,9 +68,7 @@
         android:id="@+id/createAccountFragment4"
         android:name="com.ignacio.partykneadsapp.CreateAccountFragment"
         android:label="CreateAccountFragment" >
-        <action
-            android:id="@+id/action_createAccountFragment4_to_homePageFragment"
-            app:destination="@id/OTPFragment" />
+
         <action
             android:id="@+id/action_createAccountFragment4_to_personaldetailsFragment"
             app:destination="@id/personaldetailsFragment" />
@@ -78,8 +76,9 @@
             android:id="@+id/action_createAccountFragment4_to_OTPFragment"
             app:destination="@id/OTPFragment" />
         <action
-            android:id="@+id/action_createAccountFragment4_to_OTPFragment2"
-            app:destination="@id/OTPFragment" />
+            android:id="@+id/action_createAccountFragment4_to_homePageFragment"
+            app:destination="@id/homePageFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/homePageFragment"

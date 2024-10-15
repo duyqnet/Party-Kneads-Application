@@ -1,9 +1,13 @@
+import com.android.build.api.dsl.Packaging
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.google.gms.google.services)
 }
 
 android {
+
+    viewBinding.enable = true
     namespace = "com.ignacio.partykneadsapp"
     compileSdk = 34
 
@@ -15,6 +19,18 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    packagingOptions {
+        exclude("META-INF/DEPENDENCIES")
+        exclude("META-INF/LICENSE")
+        exclude("META-INF/LICENSE.txt")
+        exclude("META-INF/notice.txt")
+        exclude("META-INF/NOTICE.txt")
+        exclude("META-INF/NOTICE.md") // Add the file type that was mentioned
+        exclude("META-INF/ASL2.0")
+        exclude("META-INF/*.kotlin_module")
+        exclude("META-INF/*.md") // To catch any markdown conflicts
     }
 
     buildTypes {
@@ -45,6 +61,7 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
     implementation ("com.google.android.gms:play-services-location:19.0.1")
-    implementation ("com.sun.mail:android-mail:1.6.2")
-    implementation ("com.sun.mail:android-activation:1.6.2")
+    implementation ("com.sun.mail:android-mail:1.6.7")
+    implementation ("com.sun.mail:android-activation:1.6.7")
+//    implementation ("com.github.1902shubh:SendMail:1.0.0")
 }
