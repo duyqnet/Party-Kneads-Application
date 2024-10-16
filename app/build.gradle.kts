@@ -63,5 +63,11 @@ dependencies {
     implementation ("com.google.android.gms:play-services-location:19.0.1")
     implementation ("com.sun.mail:android-mail:1.6.7")
     implementation ("com.sun.mail:android-activation:1.6.7")
+    implementation ("com.facebook.android:facebook-android-sdk:latest.release")
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
+    implementation ("com.google.android.gms:play-services-auth:21.2.0")
+    implementation ("com.google.firebase:firebase-auth: 21.2.0")
+
+
 //    implementation ("com.github.1902shubh:SendMail:1.0.0")
 }
