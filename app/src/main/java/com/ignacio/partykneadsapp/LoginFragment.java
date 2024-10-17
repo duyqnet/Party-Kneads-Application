@@ -7,18 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,7 +16,13 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -38,12 +32,10 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
@@ -51,19 +43,17 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
-
 import java.util.Arrays;
 
 public class LoginFragment extends Fragment {
 
-    TextInputEditText etPass, etEmail;
-    Button btnContinue, btnFacebook, btnGoogle;
-    FirebaseAuth mAuth;
-    TextView btnSignup;
-    ConstraintLayout cl;
-    CallbackManager callbackManager;
-    GoogleSignInClient googleSignInClient;
-    ActivityResultLauncher<Intent> activityResultLauncher;
+    private TextInputEditText etEmail, etPass;
+    private Button btnContinue, btnFacebook, btnGoogle;
+    private FirebaseAuth mAuth;
+    private TextView btnSignup;
+    private ConstraintLayout cl;
+    private CallbackManager callbackManager;
+    private GoogleSignInClient googleSignInClient;
 
     @Override
     public void onStart() {
@@ -71,8 +61,7 @@ public class LoginFragment extends Fragment {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
             Log.d("LoginFragment", "User is already signed in: " + currentUser.getEmail());
-            NavController navController = Navigation.findNavController(requireView());
-            navController.navigate(R.id.action_loginFragment_to_homePageFragment);
+            navigateToHomePage();
         }
     }
 
@@ -93,48 +82,56 @@ public class LoginFragment extends Fragment {
         btnContinue = view.findViewById(R.id.btnContinue);
         btnSignup = view.findViewById(R.id.btnSignUp);
         btnFacebook = view.findViewById(R.id.btnFacebook);
-        btnGoogle = view.findViewById(R.id.btnGoogle); // Initialize btnGoogle
+        btnGoogle = view.findViewById(R.id.btnGoogle);
 
         btnSignup.setOnClickListener(v -> {
             NavController navController = Navigation.findNavController(v);
             navController.navigate(R.id.action_loginFragment_to_termsFragment2);
         });
 
-        btnContinue.setOnClickListener(v -> {
-            String email = etEmail.getText().toString();
-            String password = etPass.getText().toString();
-
-            if (TextUtils.isEmpty(email)) {
-                Toast.makeText(getActivity(), "Enter email", Toast.LENGTH_SHORT).show();
-                return;
-            }
-            if (TextUtils.isEmpty(password)) {
-                Toast.makeText(getActivity(), "Enter password", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            mAuth.signInWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(task -> {
-                        if (task.isSuccessful()) {
-                            Log.d("LoginFragment", "Email login successful");
-                            Toast.makeText(getActivity(), "Login Successfully", Toast.LENGTH_SHORT).show();
-                            NavController navController = Navigation.findNavController(v);
-                            navController.navigate(R.id.action_loginFragment_to_homePageFragment);
-                        } else {
-                            Log.e("LoginFragment", "Email login failed", task.getException());
-                            Toast.makeText(getActivity(), "Authentication failed.", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-        });
+        btnContinue.setOnClickListener(v -> loginWithEmail());
 
         cl = view.findViewById(R.id.clayout);
-        cl.setOnClickListener(v -> {
-            InputMethodManager inputMethodManager = (InputMethodManager) v.getContext().getSystemService(INPUT_METHOD_SERVICE);
-            if (inputMethodManager != null) {
-                inputMethodManager.hideSoftInputFromWindow(v.getWindowToken(), 0);
-            }
-        });
+        cl.setOnClickListener(v -> hideKeyboard(v));
 
+        setupFacebookLogin();
+        setupGoogleSignIn();
+    }
+
+    private void loginWithEmail() {
+        String email = etEmail.getText().toString();
+        String password = etPass.getText().toString();
+
+        if (TextUtils.isEmpty(email)) {
+            Toast.makeText(getActivity(), "Enter email", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (TextUtils.isEmpty(password)) {
+            Toast.makeText(getActivity(), "Enter password", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Log.d("LoginFragment", "Email login successful");
+                        Toast.makeText(getActivity(), "Login Successfully", Toast.LENGTH_SHORT).show();
+                        navigateToHomePage();
+                    } else {
+                        Log.e("LoginFragment", "Email login failed", task.getException());
+                        Toast.makeText(getActivity(), "Authentication failed.", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+    private void hideKeyboard(View view) {
+        InputMethodManager inputMethodManager = (InputMethodManager) view.getContext().getSystemService(INPUT_METHOD_SERVICE);
+        if (inputMethodManager != null) {
+            inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+    }
+
+    private void setupFacebookLogin() {
         LoginManager.getInstance().registerCallback(callbackManager,
                 new FacebookCallback<LoginResult>() {
                     @Override
@@ -146,8 +143,7 @@ public class LoginFragment extends Fragment {
                                     if (task.isSuccessful()) {
                                         Log.d("LoginFragment", "Firebase authentication successful");
                                         Toast.makeText(getActivity(), "Login Successfully", Toast.LENGTH_SHORT).show();
-                                        NavController navController = Navigation.findNavController(getView());
-                                        navController.navigate(R.id.action_loginFragment_to_homePageFragment);
+                                        navigateToHomePage();
                                     } else {
                                         Log.e("LoginFragment", "Firebase authentication failed", task.getException());
                                         Toast.makeText(getActivity(), "Authentication failed.", Toast.LENGTH_SHORT).show();
@@ -170,47 +166,18 @@ public class LoginFragment extends Fragment {
             LoginManager.getInstance().logOut();
             LoginManager.getInstance().logInWithReadPermissions(LoginFragment.this, Arrays.asList("public_profile"));
         });
+    }
 
-        activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
-            @Override
-            public void onActivityResult(ActivityResult result) {
-                if (result.getResultCode() == RESULT_OK) {
-                    Task<GoogleSignInAccount> accountTask = GoogleSignIn.getSignedInAccountFromIntent(result.getData());
-                    try {
-                        GoogleSignInAccount signInAccount = accountTask.getResult(ApiException.class);
-                        AuthCredential authCredential = GoogleAuthProvider.getCredential(signInAccount.getIdToken(), null);
-                        mAuth.signInWithCredential(authCredential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    Log.d("LoginFragment", "Google sign-in successful");
-                                    Toast.makeText(getActivity(), "Login Successfully", Toast.LENGTH_SHORT).show();
-                                    NavController navController = Navigation.findNavController(getView());
-                                    navController.navigate(R.id.action_loginFragment_to_homePageFragment);
-                                    // Optionally load the user's photo
-//                                    Glide.with(LoginFragment.this).load(mAuth.getCurrentUser().getPhotoUrl()).into(/* Your ImageView */);
-                                } else {
-                                    Log.e("LoginFragment", "Google sign-in failed", task.getException());
-                                    Toast.makeText(getActivity(), "Authentication failed.", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
-                    } catch (ApiException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        });
-
+    private void setupGoogleSignIn() {
         GoogleSignInOptions options = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.client_id)) // Update to your actual client ID
                 .requestEmail()
                 .build();
         googleSignInClient = GoogleSignIn.getClient(requireActivity(), options);
 
-        btnGoogle.setOnClickListener(v ->  {
+        btnGoogle.setOnClickListener(v -> {
             Intent intent = googleSignInClient.getSignInIntent();
-            activityResultLauncher.launch(intent);
+            startActivityForResult(intent, 100); // Request code can be anything
         });
     }
 
@@ -218,5 +185,34 @@ public class LoginFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         callbackManager.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 100 && resultCode == RESULT_OK) {
+            handleGoogleSignInResult(data);
+        }
+    }
+
+    private void handleGoogleSignInResult(Intent data) {
+        try {
+            Task<GoogleSignInAccount> accountTask = GoogleSignIn.getSignedInAccountFromIntent(data);
+            GoogleSignInAccount signInAccount = accountTask.getResult(ApiException.class);
+            AuthCredential authCredential = GoogleAuthProvider.getCredential(signInAccount.getIdToken(), null);
+            mAuth.signInWithCredential(authCredential).addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    Log.d("LoginFragment", "Google sign-in successful");
+                    Toast.makeText(getActivity(), "Login Successfully", Toast.LENGTH_SHORT).show();
+                    navigateToHomePage();
+                } else {
+                    Log.e("LoginFragment", "Google sign-in failed", task.getException());
+                    Toast.makeText(getActivity(), "Authentication failed.", Toast.LENGTH_SHORT).show();
+                }
+            });
+        } catch (ApiException e) {
+            Log.e("LoginFragment", "Google sign-in failed", e);
+        }
+    }
+
+    private void navigateToHomePage() {
+        NavController navController = Navigation.findNavController(requireView());
+        navController.navigate(R.id.action_loginFragment_to_homePageFragment);
     }
 }
