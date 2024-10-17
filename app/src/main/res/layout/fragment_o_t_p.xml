@@ -7,211 +7,203 @@
     android:background="@drawable/loginbgg"
     tools:context=".OTPFragment">
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/montserrat_bold"
-        android:gravity="center"
-        android:text="Verification Code"
-        android:textSize="30dp"
-        android:textColor="@color/semiblack"
+        android:orientation="vertical"
+        android:paddingHorizontal="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.172" />
+        app:layout_constraintVertical_bias="0.5">
 
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="361dp"
-        android:layout_height="69dp"
-        android:layout_marginTop="36dp"
-        android:fontFamily="@font/montserrat_bold"
-        android:text="Use the 6-digit code sent to your email \address to verify your account."
-        android:textAlignment="center"
-        android:textColor="@color/grey"
-        android:textSize="17dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:layout_marginVertical="30dp"
+            android:gravity="center"
+            android:text="Verification Code"
+            android:textColor="@color/semiblack"
+            android:textSize="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.172" />
 
-    <TextView
-        android:id="@+id/tvEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:fontFamily="@font/montserrat_bold"
-        android:text="sweetkatrinabiancaignacio"
-        android:textSize="16dp"
-        android:textColor="@color/semiblack"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="Use the 6-digit code sent to your email \address to verify your account."
+            android:textAlignment="center"
+            android:textColor="@color/grey"
+            android:textSize="17dp" />
 
-    <EditText
-        android:id="@+id/otp1"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="60dp"
-        android:background="@drawable/otpbg"
-        android:fontFamily="@font/montserrat_bold"
-        android:gravity="center"
-        android:inputType="number"
-        android:maxLength="1"
-        android:maxLines="1"
-        android:textAlignment="center"
-        android:textColor="@color/darkpink"
-        android:textSize="18dp"
-        app:layout_constraintEnd_toStartOf="@+id/otp2"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
+        <TextView
+            android:id="@+id/tvEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="22dp"
+            android:gravity="center"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="sweetkatrinabiancaignacio"
+            android:textColor="@color/semiblack"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal"
+            android:weightSum="6">
 
-    <EditText
-        android:id="@+id/otp2"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="60dp"
-        android:background="@drawable/otpbg"
-        android:fontFamily="@font/montserrat_bold"
-        android:gravity="center"
-        android:inputType="number"
-        android:maxLength="1"
-        android:maxLines="1"
-        android:textAlignment="center"
-        android:textColor="@color/darkpink"
-        android:textSize="18dp"
-        app:layout_constraintEnd_toStartOf="@+id/otp3"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/otp1"
-        app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
-
-    <EditText
-        android:id="@+id/otp3"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="60dp"
-        android:background="@drawable/otpbg"
-        android:fontFamily="@font/montserrat_bold"
-        android:gravity="center"
-        android:inputType="number"
-        android:maxLength="1"
-        android:maxLines="1"
-        android:textAlignment="center"
-        android:textColor="@color/darkpink"
-        android:textSize="18dp"
-        app:layout_constraintEnd_toStartOf="@+id/otp4"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/otp2"
-        app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
-
-    <EditText
-        android:id="@+id/otp4"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="60dp"
-        android:background="@drawable/otpbg"
-        android:fontFamily="@font/montserrat_bold"
-        android:gravity="center"
-        android:inputType="number"
-        android:maxLength="1"
-        android:maxLines="1"
-        android:textAlignment="center"
-        android:textColor="@color/darkpink"
-        android:textSize="18dp"
-        app:layout_constraintEnd_toStartOf="@+id/otp5"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/otp3"
-        app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
-
-    <EditText
-        android:id="@+id/otp5"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="60dp"
-        android:background="@drawable/otpbg"
-        android:fontFamily="@font/montserrat_bold"
-        android:gravity="center"
-        android:inputType="number"
-        android:maxLength="1"
-        android:maxLines="1"
-        android:textAlignment="center"
-        android:textColor="@color/darkpink"
-        android:textSize="18dp"
-        app:layout_constraintEnd_toStartOf="@+id/otp6"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/otp4"
-        app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
-
-    <EditText
-        android:id="@+id/otp6"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginRight="15dp"
-        android:background="@drawable/otpbg"
-        android:fontFamily="@font/montserrat_bold"
-        android:gravity="center"
-        android:inputType="number"
-        android:maxLength="1"
-        android:maxLines="1"
-        android:textAlignment="center"
-        android:textColor="@color/darkpink"
-        android:textSize="18dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/otp5"
-        app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
-
-    <Button
-        android:id="@+id/btnsubmitOTP"
-        android:layout_width="350dp"
-        android:layout_height="66dp"
-        android:layout_marginBottom="312dp"
-        android:backgroundTint="@color/pink"
-        android:fontFamily="@font/montserrat_bold"
-        android:onClick="otpSubmit"
-        android:text="Submit"
-        android:textColor="@color/semiwhite"
-        android:textSize="18dp"
-        app:cornerRadius="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.59"
-        app:layout_constraintStart_toStartOf="parent" />
+            <EditText
+                android:id="@+id/otp1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="5dp"
+                android:background="@drawable/otpbg"
+                android:fontFamily="@font/montserrat_bold"
+                android:gravity="center"
+                android:inputType="number"
+                android:maxLength="1"
+                android:maxLines="1"
+                android:textAlignment="center"
+                android:textColor="@color/darkpink"
+                android:textSize="18dp" />
 
 
-    <TextView
-        android:id="@+id/tvcode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/montserrat_bold"
-        android:text="Didn't Receive the code?"
-        android:textColor="@color/grey"
-        android:textSize="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/otp4" />
+            <EditText
+                android:id="@+id/otp2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="5dp"
+                android:background="@drawable/otpbg"
+                android:fontFamily="@font/montserrat_bold"
+                android:gravity="center"
+                android:inputType="number"
+                android:maxLength="1"
+                android:maxLines="1"
+                android:textAlignment="center"
+                android:textColor="@color/darkpink"
+                android:textSize="18dp" />
 
-    <TextView
-        android:id="@+id/btnResend"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/montserrat_bold"
-        android:text="Resend Code"
-        android:textColor="@color/darkpink"
-        android:textSize="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.151"
-        app:layout_constraintStart_toEndOf="@+id/tvcode"
-        app:layout_constraintTop_toBottomOf="@+id/otp4" />
+            <EditText
+                android:id="@+id/otp3"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="5dp"
+                android:background="@drawable/otpbg"
+                android:fontFamily="@font/montserrat_bold"
+                android:gravity="center"
+                android:inputType="number"
+                android:maxLength="1"
+                android:maxLines="1"
+                android:textAlignment="center"
+                android:textColor="@color/darkpink"
+                android:textSize="18dp" />
 
+            <EditText
+                android:id="@+id/otp4"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="5dp"
+                android:background="@drawable/otpbg"
+                android:fontFamily="@font/montserrat_bold"
+                android:gravity="center"
+                android:inputType="number"
+                android:maxLength="1"
+                android:maxLines="1"
+                android:textAlignment="center"
+                android:textColor="@color/darkpink"
+                android:textSize="18dp" />
+
+            <EditText
+                android:id="@+id/otp5"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="5dp"
+                android:background="@drawable/otpbg"
+                android:fontFamily="@font/montserrat_bold"
+                android:gravity="center"
+                android:inputType="number"
+                android:maxLength="1"
+                android:maxLines="1"
+                android:textAlignment="center"
+                android:textColor="@color/darkpink"
+                android:textSize="18dp"/>
+
+            <EditText
+                android:id="@+id/otp6"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="5dp"
+                android:background="@drawable/otpbg"
+                android:fontFamily="@font/montserrat_bold"
+                android:gravity="center"
+                android:inputType="number"
+                android:maxLength="1"
+                android:maxLines="1"
+                android:textAlignment="center"
+                android:textColor="@color/darkpink"
+                android:textSize="18dp"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnsubmitOTP"
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            android:layout_marginBottom="15dp"
+            android:backgroundTint="@color/pink"
+            android:fontFamily="@font/montserrat_bold"
+            android:onClick="otpSubmit"
+            android:text="Submit"
+            android:textColor="@color/semiwhite"
+            android:textSize="18dp"
+            app:cornerRadius="15dp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tvcode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Didn't Receive the code?"
+                android:textColor="@color/grey"
+                android:textSize="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/otp4" />
+
+            <TextView
+                android:id="@+id/btnResend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Resend Code"
+                android:textColor="@color/darkpink"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.151"
+                app:layout_constraintStart_toEndOf="@+id/tvcode"
+                app:layout_constraintTop_toBottomOf="@+id/otp4" />
+        </LinearLayout>
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

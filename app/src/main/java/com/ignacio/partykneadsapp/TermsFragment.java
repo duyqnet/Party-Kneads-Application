@@ -1,13 +1,18 @@
 package com.ignacio.partykneadsapp;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.text.HtmlCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,5 +68,18 @@ public class TermsFragment extends Fragment {
                 }
             }
         });
+        TextView textView = view.findViewById(R.id.tvAgree);
+        String text = getString(R.string.readTerm);
+
+// Create a SpannableString
+        SpannableString spannableString = new SpannableString(text);
+
+// Set the color only for the asterisk (*)
+        spannableString.setSpan(new ForegroundColorSpan(Color.RED), 0, 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+// Apply the SpannableString to the TextView
+        textView.setText(spannableString);
+
+
     }
 }
