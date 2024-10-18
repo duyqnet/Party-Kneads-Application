@@ -1,7 +1,6 @@
 package com.ignacio.partykneadsapp;
 
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -21,19 +20,20 @@ import com.ignacio.partykneadsapp.databinding.FragmentHomePageBinding;
 
 public class HomePageFragment extends Fragment {
 
-    FirebaseAuth mAuth;
-    TextView txtUser;
-    Button btnLogout;
-    FirebaseUser user;
-    FragmentHomePageBinding binding;
+    private FragmentHomePageBinding binding;
+    private CarouselAdapter adapter;
 
-    DrawerLayout drawerLayout;
+    private FirebaseAuth mAuth;
+    private TextView txtUser;
+    private Button btnLogout;
+    private FirebaseUser user;
+    private DrawerLayout drawerLayout;
 
-       @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment\
-           binding = FragmentHomePageBinding.inflate(getLayoutInflater());
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        // Inflate the layout for this fragment using View Binding
+        binding = FragmentHomePageBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
@@ -48,32 +48,39 @@ public class HomePageFragment extends Fragment {
         txtUser = view.findViewById(R.id.txtUser);
         user = mAuth.getCurrentUser();
 
-
-
-        if(user == null) {
+        if (user == null) {
             NavController navController = Navigation.findNavController(requireView());
             navController.navigate(R.id.action_loginFragment_to_homePageFragment);
         } else {
             txtUser.setText(user.getEmail());
         }
 
-        btnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-
-                NavController navController = Navigation.findNavController(requireView());
-                navController.navigate(R.id.action_homePageFragment_to_loginFragment);
-            }
+        btnLogout.setOnClickListener(v -> {
+            FirebaseAuth.getInstance().signOut();
+            NavController navController = Navigation.findNavController(requireView());
+            navController.navigate(R.id.action_homePageFragment_to_loginFragment);
         });
 
         binding.menu.setOnClickListener(v -> {
             NavController navController = Navigation.findNavController(requireView());
             navController.navigate(R.id.action_homePageFragment_to_drawer);
         });
+
+
+        int[] images = {
+                R.drawable.image1,
+                R.drawable.image2,
+                R.drawable.image3,
+                // Add more images as needed
+        };
+
+        adapter = new CarouselAdapter(images);
+        binding.viewPager.setAdapter(adapter);
     }
 
-
-
-
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
 }
