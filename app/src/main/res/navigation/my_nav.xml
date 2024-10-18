@@ -88,6 +88,9 @@
         <action
             android:id="@+id/action_homePageFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_homePageFragment_to_drawer"
+            app:destination="@id/drawer" />
     </fragment>
 
     <fragment
@@ -99,4 +102,9 @@
             android:id="@+id/action_OTPFragment_to_homePageFragment"
             app:destination="@id/homePageFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/drawer"
+        android:name="com.ignacio.partykneadsapp.Drawer"
+        android:label="fragment_drawer"
+        tools:layout="@layout/fragment_drawer" />
 </navigation>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:icon="@drawable/profile_top"
+        android:id="@+id/navProfile"
+        android:title="Profile" />
+
+    <item
+        android:icon="@drawable/notif_bold"
+        android:id="@+id/navNotif"
+        android:title="Notifications" />
+
+    <item
+        android:icon="@drawable/heart_clicked"
+        android:id="@+id/navFavorites"
+        android:title="My Favorites" />
+
+    <item
+        android:icon="@drawable/history"
+        android:id="@+id/navHistory"
+        android:title="Order History" />
+
+    <item
+        android:icon="@drawable/baseline_payment_24"
+        android:id="@+id/navPaymentMethods"
+        android:title="Payment Methods" />
+
+    <item
+        android:icon="@drawable/track"
+        android:id="@+id/navTrack"
+        android:title="Track Your Order" />
+
+    <item
+        android:icon="@drawable/terms_24"
+        android:id="@+id/navTerms"
+        android:title="Terms and Conditions" />
+
+    <item
+        android:icon="@drawable/support"
+        android:id="@+id/navSupport"
+        android:title="Support" />
+
+    <item
+        android:icon="@drawable/baseline_settings_24"
+        android:id="@+id/navSettings"
+        android:title="Settings" />
+
+
+
+</menu>

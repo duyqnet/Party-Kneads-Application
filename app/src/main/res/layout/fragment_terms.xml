@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingHorizontal="10dp"
     android:background="@drawable/loginbgg"
     tools:context=".LoginFragment">
 
@@ -26,15 +27,16 @@
 
     <ImageView
         android:id="@+id/imageView7"
-        android:layout_width="262dp"
-        android:layout_height="218dp"
+        android:layout_width="match_parent"
+        android:layout_height="191dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginBottom="50dp"
         android:src="@drawable/terms"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textView5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.156" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/textView5"
@@ -42,7 +44,8 @@
         android:layout_height="wrap_content"
         android:background="@drawable/logincont"
         android:orientation="vertical"
-        android:paddingHorizontal="30dp"
+        android:layout_marginBottom="50dp"
+        android:paddingHorizontal="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
