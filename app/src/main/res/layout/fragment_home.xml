@@ -8,7 +8,6 @@
     android:background="@color/semiwhite"
     tools:context=".HomePageFragment">
 
-
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
@@ -18,7 +17,6 @@
         android:orientation="horizontal"
         android:paddingHorizontal="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -55,7 +53,6 @@
             android:src="@drawable/cart" />
     </LinearLayout>
 
-
     <LinearLayout
         android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
@@ -63,8 +60,7 @@
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingHorizontal="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
-        tools:layout_editor_absoluteX="0dp">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
         <ImageView
             android:id="@+id/imageView11"
@@ -73,9 +69,7 @@
             android:layout_gravity="start"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="10dp"
-            android:src="@drawable/loc"
-            app:layout_constraintStart_toStartOf="parent" />
-
+            android:src="@drawable/loc" />
 
         <TextView
             android:id="@+id/location"
@@ -85,139 +79,115 @@
             android:gravity="center_vertical"
             android:text="Blk 34 Lot 29 NHA Site 1 Calauan, Laguna"
             android:textColor="@color/semiblack"
-            android:textSize="12dp"
-            app:layout_constraintStart_toEndOf="@+id/imageView11"
-            app:layout_constraintTop_toBottomOf="@+id/txtUser" />
-
+            android:textSize="12sp" />
     </LinearLayout>
 
-
-    <LinearLayout
-        android:id="@+id/linearLayout5"
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
-        tools:layout_editor_absoluteX="-16dp">
+        app:layout_constraintBottom_toBottomOf="parent">
 
-        <SearchView
-            android:id="@+id/searchView"
-            android:layout_width="325dp"
-            android:layout_height="38dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/searchviewbg"
-            android:clickable="true"
-            android:focusable="true"
-            android:iconifiedByDefault="false"
-            android:queryHint="Search here..."
-            tools:layout_editor_absoluteX="23dp"
-            tools:layout_editor_absoluteY="145dp" />
-
-        <ImageView
-            android:id="@+id/filter"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_gravity="center_vertical"
-            android:background="@drawable/filter">
-
-        </ImageView>
-
-    </LinearLayout>
-
-
-    <Button
-        android:id="@+id/btnLogout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="772dp"
-        android:fontFamily="@font/montserrat_medium"
-        android:text="Logout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.948"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewPager"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_marginHorizontal="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
-        app:layout_constraintVertical_bias="0.05"
-        tools:ignore="MissingConstraints" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewPager">
-
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:fontFamily="@font/montserrat_bold"
-            android:text="Categories"
-            android:textColor="@color/semiblack"
-            android:textSize="16dp" />
+            android:orientation="vertical">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/categories"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.6"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/viewPager"
-            tools:itemCount="1"
-            tools:listitem="@layout/categories" />
+            <LinearLayout
+                android:id="@+id/linearLayout5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:orientation="horizontal">
 
-    </LinearLayout>
+                <SearchView
+                    android:id="@+id/searchView"
+                    android:layout_width="325dp"
+                    android:layout_height="38dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/searchviewbg"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:iconifiedByDefault="false"
+                    android:queryHint="Search here..." />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="315dp"
-        android:layout_marginTop="24dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+                <ImageView
+                    android:id="@+id/filter"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/filter" />
+            </LinearLayout>
 
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginHorizontal="20dp" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Categories"
+                android:textColor="@color/semiblack"
+                android:textSize="16sp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:fontFamily="@font/montserrat_bold"
-            android:text="Popular Products"
-            android:textColor="@color/semiblack"
-            android:textSize="16dp" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/categories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                tools:itemCount="1"
+                tools:listitem="@layout/categories" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/popular"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.6"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/viewPager"
-            tools:itemCount="1"
-            tools:listitem="@layout/popular" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Popular Products"
+                android:textColor="@color/semiblack"
+                android:textSize="16sp" />
 
-    </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/popular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                tools:itemCount="1"
+                tools:listitem="@layout/popular" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Order History"
+                android:textColor="@color/semiblack"
+                android:textSize="16sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/orderHistory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                tools:itemCount="1"
+                tools:listitem="@layout/popular" />
+
+            <Button
+                android:id="@+id/btnLogout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="Logout"
+                android:layout_gravity="end" />
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
