@@ -17,10 +17,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.ignacio.partykneadsapp.adapters.CarouselAdapter;
 import com.ignacio.partykneadsapp.adapters.CategoriesAdapter;
 import com.ignacio.partykneadsapp.adapters.OrderHistoryAdapter;
 import com.ignacio.partykneadsapp.adapters.PopularAdapter;
@@ -89,8 +89,10 @@ public class HomeFragment extends Fragment implements NavigationBarView.OnItemSe
 
         // Set up popular products
         popularProductList = new ArrayList<>();
-        popularProductList.add(new PopularModel("Product 1", "Description 1", "₱700.00", R.drawable.cake_sample));
-        popularProductList.add(new PopularModel("Product 2", "Description 2", "₱800.00", R.drawable.cake_sample));
+        popularProductList.add(new PopularModel("Product 1", "Description 1", "₱700.00", R.drawable.cake));
+        popularProductList.add(new PopularModel("Product 2", "Description 2", "₱800.00", R.drawable.cake));
+        popularProductList.add(new PopularModel("Product 3", "Description 3", "₱900.00", R.drawable.cake_sample));
+        popularProductList.add(new PopularModel("Product 3", "Description 3", "₱900.00", R.drawable.cake_sample));
         popularProductList.add(new PopularModel("Product 3", "Description 3", "₱900.00", R.drawable.cake_sample));
 
         popularAdapter = new PopularAdapter(getActivity(), popularProductList);
@@ -98,6 +100,7 @@ public class HomeFragment extends Fragment implements NavigationBarView.OnItemSe
         popular.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
         popular.setHasFixedSize(true);
         popular.setNestedScrollingEnabled(false);
+
 
         // Set up order history
         orderHistoryList = new ArrayList<>();
@@ -107,7 +110,7 @@ public class HomeFragment extends Fragment implements NavigationBarView.OnItemSe
 
         orderHistoryAdapter = new OrderHistoryAdapter(getActivity(), orderHistoryList);
         orderHistory.setAdapter(orderHistoryAdapter);
-        orderHistory.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false));
+        orderHistory.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
         orderHistory.setHasFixedSize(true);
         orderHistory.setNestedScrollingEnabled(false);
 

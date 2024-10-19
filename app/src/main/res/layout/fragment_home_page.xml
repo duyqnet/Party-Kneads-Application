@@ -27,7 +27,7 @@
         app:itemTextColor="@color/darkpink"
         app:itemIconTint="@color/footericon"
         android:layout_alignParentBottom="true"
-        android:background="@color/pinkContOpacity"
+        android:background="@drawable/bottom_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:itemActiveIndicatorStyle="@style/ShapeAppearance.Material3.Corner.None"
