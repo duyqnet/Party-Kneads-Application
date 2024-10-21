@@ -13,5 +13,6 @@
     <color name="grey">#737373</color>
     <color name="footerpink">#fcdbe6</color>
     <color name="footericon">#fc6090</color>
+    <color name="cardColor">#fdebf1</color>
 
 </resources>

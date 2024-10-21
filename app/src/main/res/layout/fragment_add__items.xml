@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/clayout"
+    android:background="@drawable/whitebg"
+    tools:context=".menus.Add_Items">
+
+
+    <ImageView
+        android:id="@+id/btnBack"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:src="@drawable/back"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="120dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <TextView
+            android:id="@+id/txtViewAddItems"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_extrabold"
+            android:text="ADD ITEMS"
+            android:textAlignment="center"
+            android:textColor="@color/darkpink"
+            android:textSize="35dp" />
+
+        <ImageView
+            android:id="@+id/itemImg"
+            android:layout_width="200dp"
+            android:layout_height="220dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"/>
+
+        <Button
+            android:id="@+id/btnUpload"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:text="Upload Image"
+            android:fontFamily="@font/montserrat_bold"
+            android:textSize="16dp"
+            android:textColor="@color/semiwhite"
+            android:layout_marginTop="15dp"
+            android:backgroundTint="@color/pink"
+            app:cornerRadius="10dp"
+            android:layout_gravity="center"/>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:boxStrokeColor="@color/darkpink"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            <AutoCompleteTextView
+                android:id="@+id/categgories"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/montserrat_medium"
+                android:textColor="@color/grey"
+                android:inputType="none"
+                android:layout_weight="1"
+                app:hintTextColor="@color/pink"
+                android:hint="Select Categories" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:gravity="center">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_marginEnd="5dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Product Name"
+                app:hintTextColor="@color/pink"
+                app:boxStrokeColor="@color/darkpink">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/productName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:textColor="@color/grey"
+                    android:textSize="16dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Price"
+                app:hintTextColor="@color/pink"
+                app:boxStrokeColor="@color/darkpink">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/productPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:textColor="@color/grey"
+                    android:textSize="16dp"
+                    android:inputType="numberDecimal" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:hint="Product Description"
+            app:hintTextColor="@color/pink"
+            app:boxStrokeColor="@color/darkpink"
+            app:boxCornerRadiusTopStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusBottomEnd="10dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_medium"
+                android:textColor="@color/grey"
+                android:textSize="16dp"
+                android:inputType="textMultiLine"
+                android:gravity="start"
+                android:minLines="3"
+                android:maxLines="6"
+                android:scrollbars="vertical" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:gravity="center">
+
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+
+                <Button
+                android:id="@+id/btnDelete"
+                android:layout_width="50dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="10dp"
+                android:textSize="16dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:backgroundTint="@color/darkpink"
+                android:textColor="@color/white"
+                android:drawableStart="@drawable/delete"
+                app:cornerRadius="10dp" />
+
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="9dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/delete" />
+
+            </FrameLayout>
+            <Button
+                android:id="@+id/btnAddItem"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="6"
+                android:text="Add Item"
+                android:textSize="16dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:backgroundTint="@color/pink"
+                android:textColor="@color/white"
+                app:cornerRadius="10dp" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

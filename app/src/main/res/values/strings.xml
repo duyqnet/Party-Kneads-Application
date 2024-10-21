@@ -14,4 +14,17 @@
     <string name="readTerm">* I have read and agree with Party Kneads\' Terms and Conditions.</string>
 
 
+    <string-array name="Categories">
+        <item>Cakes</item>
+        <item>Breads</item>
+        <item>Desserts</item>
+        <item>Custom Cakes</item>
+        <item>Balloons</item>
+        <item>Banners</item>
+        <item>Party Hats</item>
+        <item>Confetti</item>
+        <item>Candles</item>
+
+    </string-array>
+
 </resources>

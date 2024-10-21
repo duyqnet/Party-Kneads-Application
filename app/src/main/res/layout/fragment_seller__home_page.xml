@@ -7,7 +7,7 @@
     tools:context=".HomePageFragment">
 
     <FrameLayout
-        android:id="@+id/fragment_cont"
+        android:id="@+id/fragment_contseller"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/bottom_nav"
@@ -81,7 +81,7 @@
 
         <!-- Add Menu -->
         <LinearLayout
-            android:id="@+id/shop"
+            android:id="@+id/addItem"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -92,7 +92,7 @@
                 android:id="@+id/shopMenu"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:src="@drawable/shop" />
+                android:src="@drawable/add" />
 
         </LinearLayout>
 

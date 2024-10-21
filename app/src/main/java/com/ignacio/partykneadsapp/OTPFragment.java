@@ -11,20 +11,26 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.ignacio.partykneadsapp.databinding.FragmentOTPBinding;
 
+import java.util.HashMap;
 import java.util.Random;
 
 public class OTPFragment extends Fragment {
-
+    SharedViewModel sharedViewModel;
     private FragmentOTPBinding binding;
     private FirebaseAuth auth;
     private String email = "";
     private String pass = "";
+    private String lname = "";
+    private String fname = "";
     private int random;
 
     @Nullable
@@ -37,12 +43,16 @@ public class OTPFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
+        auth = FirebaseAuth.getInstance();
+
+        fname = sharedViewModel.getFname();
+        lname = sharedViewModel.getLname();
 
         if (getArguments() != null) {
             email = getArguments().getString("email");
             pass = getArguments().getString("password");
         }
-        auth = FirebaseAuth.getInstance();
 
         random();
 
@@ -50,6 +60,32 @@ public class OTPFragment extends Fragment {
         setupOtpInputFields();
         binding.tvEmail.setText(email);
         binding.btnsubmitOTP.setOnClickListener(v -> verifyOtp());
+    }
+
+    private void saveName() {
+        FirebaseUser currentUser = auth.getCurrentUser();
+        if (currentUser != null) {
+            String uid = currentUser.getUid();
+            HashMap<String, String> userMap = new HashMap<>();
+            userMap.put("First Name", fname);  // Store first name
+            userMap.put("Last Name", lname);  // Store last name
+            userMap.put("email", email);
+
+            Toast.makeText(getActivity(), fname + lname, Toast.LENGTH_SHORT).show();
+
+            // Save user details to Firestore
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+            db.collection("Users").document(uid).set(userMap)
+                    .addOnCompleteListener(dbTask -> {
+                        if (dbTask.isSuccessful()) {
+                            // Navigate to the home page after saving the data
+                            NavController navController = Navigation.findNavController(requireView());
+                            navController.navigate(R.id.action_OTPFragment_to_homePageFragment);
+                        } else {
+                            Toast.makeText(getActivity(), "Error saving user details.", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        }
     }
 
     private void setupOtpInputFields() {
@@ -133,10 +169,9 @@ public class OTPFragment extends Fragment {
         } else {
             auth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
-                    NavController navController = Navigation.findNavController(requireView());
-                    navController.navigate(R.id.action_OTPFragment_to_homePageFragment);
+                    saveName();
                 } else {
-                    Toast.makeText(getActivity(), "error occured", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Error occurred", Toast.LENGTH_SHORT).show();
                 }
             });
         }
@@ -150,7 +185,6 @@ public class OTPFragment extends Fragment {
         String message = "Your OTP is -> " + random;
 
         new JavaMailSender(email, subject, message).execute(); // Send email
-
     }
 
     private abstract class SimpleTextWatcher implements TextWatcher {

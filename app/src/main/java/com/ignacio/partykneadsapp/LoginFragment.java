@@ -44,6 +44,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class LoginFragment extends Fragment {
 
@@ -59,10 +60,16 @@ public class LoginFragment extends Fragment {
     public void onStart() {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
+
         if (currentUser != null) {
-            Log.d("LoginFragment", "User is already signed in: " + currentUser.getEmail());
-            navigateToHomePage();
+            if (Objects.equals(currentUser.getEmail(), "sweetkatrinabiancaignacio@gmail.com")) {
+                navigateToSellerHomePage();
+            } else {
+                Log.d("LoginFragment", "User is already signed in: " + currentUser.getEmail());
+                navigateToUserHomePage();
+            }
         }
+
     }
 
     @Override
@@ -89,6 +96,7 @@ public class LoginFragment extends Fragment {
             navController.navigate(R.id.action_loginFragment_to_termsFragment2);
         });
 
+        //Login with email
         btnContinue.setOnClickListener(v -> loginWithEmail());
 
         cl = view.findViewById(R.id.clayout);
@@ -99,6 +107,8 @@ public class LoginFragment extends Fragment {
     }
 
     private void loginWithEmail() {
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+
         String email = etEmail.getText().toString();
         String password = etPass.getText().toString();
 
@@ -114,9 +124,12 @@ public class LoginFragment extends Fragment {
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        Log.d("LoginFragment", "Email login successful");
                         Toast.makeText(getActivity(), "Login Successfully", Toast.LENGTH_SHORT).show();
-                        navigateToHomePage();
+                        if (Objects.equals(email, "sweetkatrinabiancaignacio@gmail.com")) {
+                            navigateToSellerHomePage();
+                        } else {
+                            navigateToUserHomePage();
+                        }
                     } else {
                         Log.e("LoginFragment", "Email login failed", task.getException());
                         Toast.makeText(getActivity(), "Authentication failed.", Toast.LENGTH_SHORT).show();
@@ -143,7 +156,7 @@ public class LoginFragment extends Fragment {
                                     if (task.isSuccessful()) {
                                         Log.d("LoginFragment", "Firebase authentication successful");
                                         Toast.makeText(getActivity(), "Login Successfully", Toast.LENGTH_SHORT).show();
-                                        navigateToHomePage();
+                                        navigateToUserHomePage();
                                     } else {
                                         Log.e("LoginFragment", "Firebase authentication failed", task.getException());
                                         Toast.makeText(getActivity(), "Authentication failed.", Toast.LENGTH_SHORT).show();
@@ -200,7 +213,7 @@ public class LoginFragment extends Fragment {
                 if (task.isSuccessful()) {
                     Log.d("LoginFragment", "Google sign-in successful");
                     Toast.makeText(getActivity(), "Login Successfully", Toast.LENGTH_SHORT).show();
-                    navigateToHomePage();
+                    navigateToUserHomePage();
                 } else {
                     Log.e("LoginFragment", "Google sign-in failed", task.getException());
                     Toast.makeText(getActivity(), "Authentication failed.", Toast.LENGTH_SHORT).show();
@@ -211,8 +224,13 @@ public class LoginFragment extends Fragment {
         }
     }
 
-    private void navigateToHomePage() {
+    private void navigateToUserHomePage() {
         NavController navController = Navigation.findNavController(requireView());
         navController.navigate(R.id.action_loginFragment_to_homePageFragment);
+    }
+
+    private void navigateToSellerHomePage() {
+        NavController navController = Navigation.findNavController(requireView());
+        navController.navigate(R.id.action_loginFragment_to_seller_HomePageFragment);
     }
 }

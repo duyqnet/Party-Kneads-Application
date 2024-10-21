@@ -41,6 +41,9 @@
         <action
             android:id="@+id/action_loginFragment_to_homePageFragment"
             app:destination="@id/homePageFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_seller_HomePageFragment"
+            app:destination="@id/seller_HomePageFragment" />
     </fragment>
     <fragment
         android:id="@+id/termsFragment2"
@@ -75,9 +78,6 @@
         <action
             android:id="@+id/action_createAccountFragment4_to_OTPFragment"
             app:destination="@id/OTPFragment" />
-        <action
-            android:id="@+id/action_createAccountFragment4_to_homePageFragment"
-            app:destination="@id/homePageFragment" />
 
     </fragment>
     <fragment
@@ -101,10 +101,21 @@
         <action
             android:id="@+id/action_OTPFragment_to_homePageFragment"
             app:destination="@id/homePageFragment" />
+        <action
+            android:id="@+id/action_OTPFragment_to_seller_HomePageFragment"
+            app:destination="@id/seller_HomePageFragment" />
     </fragment>
     <fragment
         android:id="@+id/drawer"
         android:name="com.ignacio.partykneadsapp.Drawer"
         android:label="fragment_drawer"
         tools:layout="@layout/fragment_drawer" />
+    <fragment
+        android:id="@+id/seller_HomePageFragment"
+        android:name="com.ignacio.partykneadsapp.Seller_HomePageFragment"
+        android:label="Seller_HomePageFragment" >
+        <action
+            android:id="@+id/action_seller_HomePageFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
 </navigation>

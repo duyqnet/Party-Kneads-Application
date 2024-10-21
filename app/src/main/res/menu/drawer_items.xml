@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:icon="@drawable/profile_top"
+        android:icon="@drawable/person"
         android:id="@+id/navProfile"
         android:title="Profile" />
 
     <item
-        android:icon="@drawable/notif_bold"
+        android:icon="@drawable/notif"
         android:id="@+id/navNotif"
         android:title="Notifications" />
 
     <item
-        android:icon="@drawable/heart_clicked"
+        android:icon="@drawable/favorite"
         android:id="@+id/navFavorites"
         android:title="My Favorites" />
 

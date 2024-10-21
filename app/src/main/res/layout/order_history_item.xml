@@ -10,7 +10,7 @@
     <LinearLayout
         android:layout_width="214dp"
         android:layout_height="283dp"
-        android:background="@color/footerpink"
+        android:background="@color/cardColor"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         android:paddingTop="10dp">
@@ -30,7 +30,7 @@
             android:layout_height="15dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:background="@drawable/heart_clicked" />
+            android:background="@drawable/favorite" />
 
         <TextView
             android:id="@+id/itemName"
