@@ -36,7 +36,7 @@
             android:layout_gravity="center_vertical"
             android:fontFamily="@font/montserrat_extrabold"
             android:gravity="start"
-            android:text="Hi, Bianca!"
+            android:text=""
             android:textColor="@color/darkpink"
             android:textSize="18sp" />
 
@@ -77,7 +77,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_medium"
             android:gravity="center_vertical"
-            android:text="Blk 34 Lot 29 NHA Site 1 Calauan, Laguna"
+            android:text=""
             android:textColor="@color/semiblack"
             android:textSize="12sp" />
     </LinearLayout>

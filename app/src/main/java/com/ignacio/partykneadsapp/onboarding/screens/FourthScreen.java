@@ -55,20 +55,29 @@ public class FourthScreen extends Fragment {
     private void getLastLocationAndProceed() {
         if (ActivityCompat.checkSelfPermission(requireActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             Toast.makeText(requireActivity(), "Location permission not granted. Proceeding without location.", Toast.LENGTH_SHORT).show();
-        } else {
-            fusedLocationClient.getLastLocation()
-                    .addOnSuccessListener(requireActivity(), new OnSuccessListener<Location>() {
-                        @Override
-                        public void onSuccess(Location location) {
-                            if (location != null) {
-                                Toast.makeText(requireActivity(), "Location: " + location.getLatitude() + ", " + location.getLongitude(), Toast.LENGTH_LONG).show();
-                            } else {
-                                Toast.makeText(requireActivity(), "No location found", Toast.LENGTH_LONG).show();
-                            }
-                        }
-                    });
+
+            // Navigate without location if permission is denied
+            NavHostFragment.findNavController(FourthScreen.this).navigate(R.id.action_viewPagerFragment_to_loginFragment);
+            return;
         }
-        NavHostFragment.findNavController(FourthScreen.this).navigate(R.id.action_viewPagerFragment_to_loginFragment);
+
+        fusedLocationClient.getLastLocation()
+                .addOnSuccessListener(requireActivity(), new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+                        Bundle bundle = new Bundle();
+                        if (location != null) {
+                            Toast.makeText(requireActivity(), "Location: " + location.getLatitude() + ", " + location.getLongitude(), Toast.LENGTH_LONG).show();
+                            bundle.putDouble("latitude", location.getLatitude());
+                            bundle.putDouble("longitude", location.getLongitude());
+                        } else {
+                            Toast.makeText(requireActivity(), "No location found", Toast.LENGTH_LONG).show();
+                        }
+
+                        // Navigate to HomeFragment with the location data
+                        NavHostFragment.findNavController(FourthScreen.this).navigate(R.id.action_viewPagerFragment_to_loginFragment, bundle);
+                    }
+                });
     }
 
     @Override

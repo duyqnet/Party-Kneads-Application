@@ -2,6 +2,12 @@ package com.ignacio.partykneadsapp;
 
 import static android.content.Context.INPUT_METHOD_SERVICE;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import androidx.core.app.ActivityCompat;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,6 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,9 +31,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.ignacio.partykneadsapp.adapters.CarouselAdapter;
 import com.ignacio.partykneadsapp.adapters.CategoriesAdapter;
 import com.ignacio.partykneadsapp.adapters.OrderHistoryAdapter;
@@ -36,8 +48,10 @@ import com.ignacio.partykneadsapp.model.CategoriesModel;
 import com.ignacio.partykneadsapp.model.OrderHistoryModel;
 import com.ignacio.partykneadsapp.model.PopularModel;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 public class HomeFragment extends Fragment implements NavigationBarView.OnItemSelectedListener {
@@ -45,6 +59,7 @@ public class HomeFragment extends Fragment implements NavigationBarView.OnItemSe
     private CarouselAdapter adapter;
     private FragmentHomeBinding binding;
     private FirebaseAuth mAuth;
+    private FirebaseFirestore firestore; // Declare Firestore instance
     private TextView txtUser;
     private Button btnLogout;
     private FirebaseUser user;
@@ -65,6 +80,10 @@ public class HomeFragment extends Fragment implements NavigationBarView.OnItemSe
     private int dotsCount;
     private ImageView[] dots;
     private LinearLayout cl;
+
+    // Location-related variables
+    private FusedLocationProviderClient fusedLocationClient;
+    private TextView locationTextView;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -134,6 +153,7 @@ public class HomeFragment extends Fragment implements NavigationBarView.OnItemSe
         super.onViewCreated(view, savedInstanceState);
 
         mAuth = FirebaseAuth.getInstance();
+        firestore = FirebaseFirestore.getInstance(); // Initialize Firestore
         btnLogout = view.findViewById(R.id.btnLogout);
         txtUser = view.findViewById(R.id.txtUserFname);
         user = mAuth.getCurrentUser();
@@ -142,14 +162,8 @@ public class HomeFragment extends Fragment implements NavigationBarView.OnItemSe
             NavController navController = Navigation.findNavController(requireView());
             navController.navigate(R.id.action_loginFragment_to_homePageFragment);
         } else {
-            String email = user.getEmail();
-            if (email != null && !email.isEmpty()) {
-                String firstName = email.split("@")[0];
-                firstName = capitalizeFirstLetter(firstName.split("\\.")[0]);
-                txtUser.setText("Hi, " + firstName + "!");
-            } else {
-                txtUser.setText("Hi, User!");
-            }
+            String userId = user.getUid(); // Get the user's unique ID
+            fetchUserFirstName(userId); // Call method to fetch user data
         }
 
         btnLogout.setOnClickListener(v -> {
@@ -168,7 +182,97 @@ public class HomeFragment extends Fragment implements NavigationBarView.OnItemSe
             InputMethodManager inputMethodManager = (InputMethodManager) view.getContext().getSystemService(INPUT_METHOD_SERVICE);
             inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
         });
+
+        // Initialize location services
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity());
+        locationTextView = view.findViewById(R.id.location); // Ensure this ID matches your XML
+        getCurrentLocation();
     }
+
+    private void fetchUserFirstName(String userId) {
+        // Create a reference to the user's document in Firestore
+        DocumentReference userDocRef = firestore.collection("Users").document(userId);
+
+        // Fetch the document
+        userDocRef.get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    if (documentSnapshot.exists()) {
+                        // Get the first name from the document
+                        String firstName = documentSnapshot.getString("First Name");
+                        if (firstName != null && !firstName.trim().isEmpty()) {
+                            // Update the UI with the capitalized first name
+                            txtUser.setText("Hi, " + capitalizeFirstLetter(firstName) + "!");
+                        } else {
+                            // Log the issue for debugging
+                            Log.d("HomeFragment", "First Name field is null or empty");
+                            txtUser.setText("Hi, Empty!");
+                        }
+                    } else {
+                        // Log the issue for debugging
+                        Log.d("HomeFragment", "No such document");
+                        txtUser.setText("Hi, NoDocument!");
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    // Log the error for debugging
+                    Log.e("HomeFragment", "Error fetching user data", e);
+                    txtUser.setText("Hi, Error Fetching!");
+                });
+    }
+
+
+    private void getCurrentLocation() {
+        if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // Handle the case where permission is not granted
+            locationTextView.setText("Location permission not granted");
+            return;
+        }
+
+        fusedLocationClient.getLastLocation()
+                .addOnSuccessListener(requireActivity(), location -> {
+                    if (location != null) {
+                        displayLocation(location);
+                    } else {
+                        locationTextView.setText("Unable to get location");
+                    }
+                })
+                .addOnFailureListener(requireActivity(), e -> {
+                    locationTextView.setText("Error getting location: " + e.getMessage());
+                });
+    }
+
+    private void displayLocation(Location location) {
+        Geocoder geocoder = new Geocoder(requireContext(), Locale.getDefault());
+        try {
+            List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+            if (addresses != null && !addresses.isEmpty()) {
+                Address address = addresses.get(0);
+                StringBuilder addressDetails = new StringBuilder();
+
+                // Append Province
+                if (address.getSubAdminArea() != null) {
+                    addressDetails.append(address.getSubAdminArea());
+                }
+                // Append City
+                if (address.getLocality() != null) {
+                    addressDetails.append(", ").append(address.getLocality());
+                }
+                // Append Postal Code
+                if (address.getPostalCode() != null) {
+                    addressDetails.append(" (").append(address.getPostalCode()).append(")");
+                }
+
+                // Update UI
+                locationTextView.setText(addressDetails.toString());
+            } else {
+                locationTextView.setText("No address found");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            locationTextView.setText("Geocoder service not available");
+        }
+    }
+
 
     // Set up categories
     private void setupCategories() {

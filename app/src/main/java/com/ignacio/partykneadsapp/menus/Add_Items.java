@@ -18,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -54,7 +55,13 @@ public class Add_Items extends Fragment {
         cl = view.findViewById(R.id.clayout);
         cl.setOnClickListener(v -> hideKeyboard(v));
 
-        binding.btnUpload.setOnClickListener(v -> { uploadImage(); });
+        binding.btnUpload.setOnClickListener(v -> uploadImage());
+
+        // Set up the AutoCompleteTextView for categories
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
+                R.array.Categories, android.R.layout.simple_dropdown_item_1line);
+        binding.categgories.setAdapter(adapter);
+
         binding.btnAddItem.setOnClickListener(v -> {
             String productId = "product" + productCounter++; // Generate unique ID
             if (selectedImageUri != null) {
