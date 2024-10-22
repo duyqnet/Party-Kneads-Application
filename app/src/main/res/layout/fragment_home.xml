@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/semiwhite"
+
     tools:context=".HomePageFragment">
 
     <LinearLayout
@@ -21,16 +22,15 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/menu"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:id="@+id/userProfile"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_gravity="start"
             android:layout_marginEnd="8dp"
-            android:background="@drawable/baseline_menu_24"
-            android:onClick="menu_burger" />
+            android:background="@drawable/round_person_24"/>
 
         <TextView
-            android:id="@+id/txtUser"
+            android:id="@+id/txtUserFname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -49,7 +49,7 @@
             android:id="@+id/cart"
             android:layout_width="34dp"
             android:layout_height="30dp"
-            android:layout_gravity="end"
+            android:layout_gravity="end|center"
             android:src="@drawable/cart" />
     </LinearLayout>
 
@@ -92,6 +92,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/clayout"
             android:orientation="vertical"
             android:layout_marginTop="10dp">
 
@@ -100,26 +101,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingHorizontal="20dp">
 
+                <!-- SearchView with full width -->
                 <SearchView
                     android:id="@+id/searchView"
-                    android:layout_width="325dp"
+                    android:layout_width="0dp"
                     android:layout_height="38dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
                     android:background="@drawable/searchviewbg"
                     android:clickable="true"
                     android:focusable="true"
                     android:iconifiedByDefault="false"
                     android:queryHint="Search here..." />
-
-                <ImageView
-                    android:id="@+id/filter"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_gravity="center_vertical"
-                    android:background="@drawable/filter" />
             </LinearLayout>
 
             <androidx.viewpager2.widget.ViewPager2
@@ -148,7 +143,7 @@
                 android:fontFamily="@font/montserrat_bold"
                 android:text="Categories"
                 android:textColor="@color/semiblack"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/categories"
@@ -176,7 +171,7 @@
                     android:fontFamily="@font/montserrat_bold"
                     android:text="Popular Products"
                     android:textColor="@color/semiblack"
-                    android:textSize="20sp" />
+                    android:textSize="18sp" />
 
                 <!-- View All Button -->
                 <TextView
@@ -220,7 +215,7 @@
                     android:fontFamily="@font/montserrat_bold"
                     android:text="Order History"
                     android:textColor="@color/semiblack"
-                    android:textSize="20sp" />
+                    android:textSize="18sp" />
 
                 <!-- View All Button -->
                 <TextView
