@@ -299,9 +299,9 @@ public class HomeFragment extends Fragment implements NavigationBarView.OnItemSe
     private void setupPopularProducts() {
         popular = binding.popular;
         popularProductList = new ArrayList<>();
-        popularProductList.add(new PopularModel("Product 1", "Description 1", "₱700.00", R.drawable.cake_sample));
-        popularProductList.add(new PopularModel("Product 2", "Description 2", "₱800.00", R.drawable.cake_sample));
-        popularProductList.add(new PopularModel("Product 3", "Description 3", "₱900.00", R.drawable.cake_sample));
+        popularProductList.add(new PopularModel("Strawberry Bean", "5.0 (100)", "₱700.00",  R.drawable.strawberry, "20 sold"));
+        popularProductList.add(new PopularModel("Matcha", "5.0 (100)", "₱800.00", R.drawable.matcha, "23 sold"));
+        popularProductList.add(new PopularModel("Strawberry Shortcake 3", "5.0 (100)", "₱900.00", R.drawable.shortcake, "15 sold"));
 
         popularAdapter = new PopularAdapter(getActivity(), popularProductList);
         popular.setAdapter(popularAdapter);
@@ -314,9 +314,9 @@ public class HomeFragment extends Fragment implements NavigationBarView.OnItemSe
     private void setupOrderHistory() {
         orderHistory = binding.orderHistory;
         orderHistoryList = new ArrayList<>();
-        orderHistoryList.add(new OrderHistoryModel("Vanilla Bean Cake", "₱700.00", R.drawable.cake_sample));
-        orderHistoryList.add(new OrderHistoryModel("Chocolate Cake", "₱750.00", R.drawable.cake_sample));
-        orderHistoryList.add(new OrderHistoryModel("Red Velvet Cake", "₱800.00", R.drawable.cake_sample));
+        orderHistoryList.add(new OrderHistoryModel("Strawberry Bean", "5.0 (100)", "₱700.00",  R.drawable.strawberry, "20 sold"));
+        orderHistoryList.add(new OrderHistoryModel("Matcha", "5.0 (100)", "₱800.00", R.drawable.matcha, "23 sold"));
+        orderHistoryList.add(new OrderHistoryModel("Strawberry Shortcake 3", "5.0 (100)", "₱900.00", R.drawable.shortcake, "15 sold"));
 
         orderHistoryAdapter = new OrderHistoryAdapter(getActivity(), orderHistoryList);
         orderHistory.setAdapter(orderHistoryAdapter);

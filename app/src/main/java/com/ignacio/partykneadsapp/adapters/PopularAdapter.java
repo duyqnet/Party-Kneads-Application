@@ -36,15 +36,13 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         PopularModel product = products.get(position);
-        holder.productText.setText(product.getName());
-        holder.itemDescription.setText(product.getDescription());
+        holder.productName.setText(product.getName());
+        holder.itemRating.setText(product.getRate());
         holder.itemPrice.setText(product.getPrice());
         holder.productImage.setImageResource(product.getImageResource());
+        holder.itemSold.setText(product.getSold());
 
-        // Handle button click
-        holder.btnOrderNow.setOnClickListener(v -> {
-            // Handle order now action, e.g., open product details
-        });
+
     }
 
     @Override
@@ -53,19 +51,21 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView productText;
-        TextView itemDescription;
-        TextView itemPrice;
         ImageView productImage;
-        Button btnOrderNow;
+        TextView productName;
+        TextView itemRating;
+        TextView itemPrice;
+        TextView itemSold;
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            productText = itemView.findViewById(R.id.productText);
-            itemDescription = itemView.findViewById(R.id.itemDescription);
+            productName = itemView.findViewById(R.id.productName);
+            itemRating = itemView.findViewById(R.id.itemRating);
             itemPrice = itemView.findViewById(R.id.itemPrice);
             productImage = itemView.findViewById(R.id.productImage);
-            btnOrderNow = itemView.findViewById(R.id.btnOrderNow);
+           itemSold = itemView.findViewById(R.id.itemSold);
+
         }
     }
 }

@@ -1,18 +1,27 @@
 package com.ignacio.partykneadsapp.model;
 
 public class OrderHistoryModel {
-    private String productName;
+    private String name;
+    private String rate;
+    private String sold;
     private String price;
-    private int imageResource; // Resource ID for the image
+    private int imageResource;
 
-    public OrderHistoryModel(String productName, String price, int imageResource) {
-        this.productName = productName;
+    public OrderHistoryModel(String name, String rate, String price, int imageResource, String sold) {
+        this.name = name;
+        this.rate = rate;
         this.price = price;
+        this.sold = sold;
         this.imageResource = imageResource;
     }
 
-    public String getProductName() {
-        return productName;
+
+    public String getName() {
+        return name;
+    }
+
+    public String getRate() {
+        return rate;
     }
 
     public String getPrice() {
@@ -21,5 +30,9 @@ public class OrderHistoryModel {
 
     public int getImageResource() {
         return imageResource;
+    }
+
+    public String getSold() {
+        return sold;
     }
 }

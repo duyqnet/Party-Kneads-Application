@@ -16,7 +16,7 @@
         android:layout_marginTop="50dp"
         android:gravity="center"
         android:orientation="horizontal"
-        android:paddingHorizontal="20dp"
+       android:paddingLeft="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -25,7 +25,7 @@
             android:id="@+id/userProfile"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_gravity="start"
+            android:layout_gravity="bottom"
             android:layout_marginEnd="8dp"
             android:background="@drawable/round_person_24"/>
 
@@ -33,24 +33,44 @@
             android:id="@+id/txtUserFname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
             android:fontFamily="@font/montserrat_extrabold"
-            android:gravity="start"
+            android:layout_gravity="bottom"
             android:text=""
             android:textColor="@color/darkpink"
-            android:textSize="18sp" />
+            android:textSize="28sp" />
 
         <View
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_weight="1" />
 
-        <ImageView
-            android:id="@+id/cart"
-            android:layout_width="34dp"
-            android:layout_height="30dp"
-            android:layout_gravity="end|center"
-            android:src="@drawable/cart" />
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_marginEnd="-55dp"> <!-- Move the right half of the button outside the screen -->
+
+            <!-- Pink Button Background -->
+            <Button
+                android:id="@+id/btnCart"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:backgroundTint="@color/pink"
+                android:layout_gravity="bottom"
+                android:elevation="4dp" />
+
+            <!-- Cart Icon on top of the button -->
+            <ImageView
+                android:id="@+id/cart"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="38dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/cart_white"
+                android:layout_marginEnd="10dp"
+                />
+        </FrameLayout>
+
     </LinearLayout>
 
     <LinearLayout
@@ -66,7 +86,7 @@
             android:id="@+id/imageView11"
             android:layout_width="20dp"
             android:layout_height="25dp"
-            android:layout_gravity="start"
+            android:layout_gravity="center"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="10dp"
             android:src="@drawable/loc" />
@@ -79,7 +99,7 @@
             android:gravity="center_vertical"
             android:text=""
             android:textColor="@color/semiblack"
-            android:textSize="12sp" />
+            android:textSize="14sp" />
     </LinearLayout>
 
     <ScrollView
@@ -138,7 +158,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="25dp"
                 android:layout_marginBottom="5dp"
                 android:fontFamily="@font/montserrat_bold"
                 android:text="Categories"
@@ -160,7 +180,7 @@
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
                 android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="25dp"
                 android:layout_marginBottom="5dp">
 
                 <!-- Popular Products Title -->
@@ -204,7 +224,7 @@
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
                 android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="25dp"
                 android:layout_marginBottom="5dp">
 
                 <!-- Order History Title -->

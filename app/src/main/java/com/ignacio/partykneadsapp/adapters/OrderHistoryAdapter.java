@@ -36,10 +36,11 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         OrderHistoryModel order = orderHistoryList.get(position);
-
-        holder.productImage.setImageResource(order.getImageResource());
-        holder.itemName.setText(order.getProductName());
+        holder.productName.setText(order.getName());
+        holder.itemRating.setText(order.getRate());
         holder.itemPrice.setText(order.getPrice());
+        holder.productImage.setImageResource(order.getImageResource());
+        holder.itemSold.setText(order.getSold());
     }
 
     @Override
@@ -49,14 +50,18 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView productImage;
-        TextView itemName;
+        TextView productName;
+        TextView itemRating;
         TextView itemPrice;
+        TextView itemSold;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            productImage = itemView.findViewById(R.id.productImage);
-            itemName = itemView.findViewById(R.id.itemName);
+            productName = itemView.findViewById(R.id.productName);
+            itemRating = itemView.findViewById(R.id.itemRating);
             itemPrice = itemView.findViewById(R.id.itemPrice);
+            productImage = itemView.findViewById(R.id.productImage);
+            itemSold = itemView.findViewById(R.id.itemSold);
         }
     }
 }

@@ -2,14 +2,16 @@ package com.ignacio.partykneadsapp.model;
 
 public class PopularModel {
     private String name;
-    private String description;
+    private String rate;
+    private String sold;
     private String price;
     private int imageResource; // Resource ID for the image
 
-    public PopularModel(String name, String description, String price, int imageResource) {
+    public PopularModel(String name, String rate, String price, int imageResource, String sold) {
         this.name = name;
-        this.description = description;
+        this.rate = rate;
         this.price = price;
+        this.sold = sold;
         this.imageResource = imageResource;
     }
 
@@ -17,8 +19,8 @@ public class PopularModel {
         return name;
     }
 
-    public String getDescription() {
-        return description;
+    public String getRate() {
+        return rate;
     }
 
     public String getPrice() {
@@ -27,5 +29,9 @@ public class PopularModel {
 
     public int getImageResource() {
         return imageResource;
+    }
+
+    public String getSold() {
+        return sold;
     }
 }

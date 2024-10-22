@@ -1,14 +1,188 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".menus.ShopFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!-- Top LinearLayout: Consider removing if not needed -->
+    <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView" />
 
-</FrameLayout>
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"> <!-- Add this to ensure ScrollView fills the space -->
+
+        <LinearLayout
+            android:id="@+id/clayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/linearLayout5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:orientation="horizontal"
+                android:paddingHorizontal="20dp">
+
+                <!-- SearchView with full width -->
+                <SearchView
+                    android:id="@+id/searchView"
+                    android:layout_width="0dp"
+                    android:layout_height="38dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/searchviewbg"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:iconifiedByDefault="false"
+                    android:queryHint="Search here..." />
+            </LinearLayout>
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="30dp" />
+
+            <!-- Dot Indicator -->
+            <LinearLayout
+                android:id="@+id/dotsIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Categories"
+                android:textColor="@color/semiblack"
+                android:textSize="18sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/categories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="5dp"
+                tools:itemCount="1"
+                tools:listitem="@layout/categories" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="5dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <!-- Popular Products Title -->
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="Popular Products"
+                    android:textColor="@color/semiblack"
+                    android:textSize="18sp" />
+
+                <!-- View All Button -->
+                <TextView
+                    android:id="@+id/btnViewAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:onClick="onViewAllPopularProductsClick"
+                    android:text="View All >"
+                    android:textColor="@color/grey"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- RecyclerView for Popular Products -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/popular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="0dp"
+                tools:itemCount="1"
+                tools:listitem="@layout/popular_item" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="5dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <!-- Order History Title -->
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="Order History"
+                    android:textColor="@color/semiblack"
+                    android:textSize="18sp" />
+
+                <!-- View All Button -->
+                <TextView
+                    android:id="@+id/viewAllOrderHistory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:onClick="onViewAllOrderHistoryClick"
+                    android:text="View All >"
+                    android:textColor="@color/grey"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- RecyclerView for Order History -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/orderHistory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="5dp"
+                tools:itemCount="1"
+                tools:listitem="@layout/popular_item" />
+
+            <Button
+                android:id="@+id/btnLogout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_margin="16dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="Logout" />
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
