@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.ignacio.partykneadsapp.R;
 import com.ignacio.partykneadsapp.model.ProductShopModel;
 
@@ -17,29 +18,32 @@ import java.util.List;
 
 public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.ProductViewHolder> {
 
-    private Context context;
     private List<ProductShopModel> productList;
 
-    public ProductShopAdapter(Context context, List<ProductShopModel> productList) {
-        this.context = context;
+    public ProductShopAdapter(List<ProductShopModel> productList) {
         this.productList = productList;
     }
 
     @NonNull
     @Override
     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.products_shop, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.products_shop, parent, false);
         return new ProductViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
-        ProductShopModel product = productList.get(position);
-        holder.productName.setText(product.getName());
-        holder.productPrice.setText(product.getPrice());
-        holder.itemRating.setText(product.getRating());
-        holder.itemSold.setText(product.getSoldCount() + " sold");
-        holder.productImage.setImageResource(product.getImageResource());
+        ProductShopModel currentProduct = productList.get(position);
+
+        // Bind data to the views
+        holder.productName.setText(currentProduct.getName());
+        holder.itemPrice.setText("P " + currentProduct.getPrice());
+
+        // Load product image using Glide
+        Glide.with(holder.itemView.getContext())
+                .load(currentProduct.getImageUrl())
+                 // Add a placeholder image
+                .into(holder.productImage);
     }
 
     @Override
@@ -48,19 +52,21 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
     }
 
     public static class ProductViewHolder extends RecyclerView.ViewHolder {
-        public TextView productName;
-        public TextView productPrice;
-        public TextView itemRating;
-        public TextView itemSold;
-        public ImageView productImage;
+        ImageView productImage;
+        TextView productName, itemPrice;
 
         public ProductViewHolder(@NonNull View itemView) {
             super(itemView);
-            productName = itemView.findViewById(R.id.productName);
-            productPrice = itemView.findViewById(R.id.itemPrice);
-            itemRating = itemView.findViewById(R.id.itemRating);
-            itemSold = itemView.findViewById(R.id.itemSold);
             productImage = itemView.findViewById(R.id.productImage);
+            productName = itemView.findViewById(R.id.productName);
+            itemPrice = itemView.findViewById(R.id.itemPrice);
         }
     }
+
+    public void updateData(List<ProductShopModel> newProductsList) {
+        this.productList.clear();
+        this.productList.addAll(newProductsList);
+        notifyDataSetChanged();
+    }
+
 }

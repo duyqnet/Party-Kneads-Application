@@ -1,18 +1,18 @@
 package com.ignacio.partykneadsapp.model;
 
 public class ProductShopModel {
+    private String imageUrl;
     private String name;
     private String price;
-    private String rating; // Or double, if you prefer
-    private int soldCount;
-    private int imageResource; // Image resource ID
 
-    public ProductShopModel(String name, String price, String rating, int soldCount, int imageResource) {
+    public ProductShopModel(String imageUrl, String name, String price) {
+        this.imageUrl = imageUrl;
         this.name = name;
         this.price = price;
-        this.rating = rating;
-        this.soldCount = soldCount;
-        this.imageResource = imageResource;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
     }
 
     public String getName() {
@@ -22,17 +22,4 @@ public class ProductShopModel {
     public String getPrice() {
         return price;
     }
-
-    public String getRating() {
-        return rating;
-    }
-
-    public int getSoldCount() {
-        return soldCount;
-    }
-
-    public int getImageResource() {
-        return imageResource;
-    }
 }
-

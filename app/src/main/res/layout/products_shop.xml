@@ -13,31 +13,6 @@
         android:layout_height="match_parent"
         android:background="@color/footerpink">
 
-        <FrameLayout
-            android:id="@+id/btnHeart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp">
-
-            <Button
-                android:layout_width="40dp"
-                android:layout_height="45dp"
-                android:layout_gravity="start"
-                android:backgroundTint="@color/semiwhite" />
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:src="@drawable/heart_pink" />
-        </FrameLayout>
-
-        <ImageView
-            android:layout_width="75dp"
-            android:layout_height="120dp"
-            android:layout_gravity="end"
-            android:src="@drawable/drip_right" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -47,8 +22,9 @@
 
             <ImageView
                 android:id="@+id/productImage"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="130dp"
+                android:layout_gravity="center"
                 android:src="@drawable/strawberry" />
 
             <FrameLayout
@@ -127,5 +103,32 @@
                 </LinearLayout>
             </FrameLayout>
         </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/btnHeart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp">
+
+            <Button
+                android:layout_width="40dp"
+                android:layout_height="45dp"
+                android:layout_gravity="start"
+                android:backgroundTint="@color/semiwhite" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/heart_pink" />
+        </FrameLayout>
+
+        <ImageView
+            android:layout_width="75dp"
+            android:layout_height="120dp"
+            android:layout_gravity="end"
+            android:src="@drawable/drip_right" />
+
     </FrameLayout>
 </androidx.cardview.widget.CardView>
