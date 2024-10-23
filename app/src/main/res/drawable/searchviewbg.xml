@@ -2,7 +2,7 @@
     <!-- Normal State (background color #fd81a7) -->
     <item>
         <shape>
-            <solid android:color="#fcdbe6" />
+            <solid android:color="@color/footerpink" />
             <corners android:radius="8dp" />
         </shape>
     </item>

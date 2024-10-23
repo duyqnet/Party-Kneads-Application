@@ -4,32 +4,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="16dp"
+   android:layout_marginHorizontal="10dp"
+    android:layout_marginTop="25dp"
     app:cardCornerRadius="10dp">
 
     <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="320dp"
+        android:layout_width="185dp"
+        android:layout_height="match_parent"
         android:background="@color/footerpink">
 
         <FrameLayout
             android:id="@+id/btnHeart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp">
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp">
 
             <Button
                 android:layout_width="40dp"
                 android:layout_height="45dp"
-                android:backgroundTint="@color/semiwhite"
-                android:layout_gravity="start"/>
+                android:layout_gravity="start"
+                android:backgroundTint="@color/semiwhite" />
 
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/favorite"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:src="@drawable/heart_pink" />
         </FrameLayout>
 
         <ImageView
@@ -64,8 +65,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    android:paddingHorizontal="20dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_marginHorizontal="10dp">
 
                     <TextView
                         android:id="@+id/productName"
@@ -78,7 +79,7 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="25dp"
+                        android:layout_marginTop="10dp"
                         android:orientation="horizontal">
 
                         <ImageView
@@ -90,21 +91,22 @@
                             android:id="@+id/itemRating"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="5.0 (100)"
                             android:layout_marginLeft="5dp"
                             android:fontFamily="@font/montserrat_semibold"
-                            android:textSize="12sp"
-                            android:textColor="@color/grey"/>
+                            android:text="5.0 (100)"
+                            android:textColor="@color/grey"
+                            android:textSize="12sp" />
                     </LinearLayout>
 
                     <TextView
                         android:id="@+id/itemPrice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_bold"
                         android:text="P 567.00"
-                        android:textSize="20sp"
+                        android:layout_marginBottom="15dp"
                         android:textColor="@color/semiblack"
-                        android:fontFamily="@font/montserrat_bold"/>
+                        android:textSize="20sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -116,9 +118,9 @@
                         android:id="@+id/itemSold"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:fontFamily="@font/montserrat_semibold"
                         android:gravity="end|bottom"
                         android:padding="10dp"
-                        android:fontFamily="@font/montserrat_semibold"
                         android:text="78 sold"
                         android:textColor="@color/grey"
                         android:textSize="14sp" />

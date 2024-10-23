@@ -55,6 +55,9 @@
         <action
             android:id="@+id/action_termsFragment2_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_termsFragment2_to_tandCFragment"
+            app:destination="@id/tandCFragment" />
     </fragment>
     <fragment
         android:id="@+id/personaldetailsFragment"
@@ -117,5 +120,13 @@
         <action
             android:id="@+id/action_seller_HomePageFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tandCFragment"
+        android:name="com.ignacio.partykneadsapp.TandCFragment"
+        android:label="TandCFragment" >
+        <action
+            android:id="@+id/action_tandCFragment_to_termsFragment2"
+            app:destination="@id/termsFragment2" />
     </fragment>
 </navigation>
