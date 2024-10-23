@@ -11,6 +11,7 @@
     android:id="@+id/clayout"
     tools:context=".menus.ShopFragment">
 
+    <!-- Search bar that remains fixed -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,197 +28,187 @@
             android:clickable="true"
             android:focusable="true"
             android:iconifiedByDefault="false"
-            android:queryHint="Search here..."/>
-
+            android:queryHint="Search here..." />
     </LinearLayout>
 
-
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="20dp">
-
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical" >
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="10dp"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:id="@+id/home"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <ImageView
-                android:id="@+id/homeMenu"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:src="@drawable/orders" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Orders"
-                android:fontFamily="@font/montserrat_bold"
-                android:textSize="12sp"
-                android:textColor="@color/semiblack"
-                android:gravity="center" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:src="@drawable/shipping_info" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Shipping Info"
-                android:fontFamily="@font/montserrat_bold"
-                android:textSize="12sp"
-                android:textColor="@color/semiblack"
-                android:gravity="center" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:src="@drawable/vouchers" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Home"
-                android:fontFamily="@font/montserrat_bold"
-                android:textSize="12sp"
-                android:textColor="@color/semiblack"
-                android:gravity="center" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="25dp"
-                android:src="@drawable/loc" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Address"
-                android:fontFamily="@font/montserrat_bold"
-                android:textSize="12sp"
-                android:textColor="@color/semiblack"
-                android:gravity="center" />
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginVertical="10dp"
-        android:layout_gravity="center">
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="2dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="25dp"
-            android:backgroundTint="@color/darkpink"
-            android:layout_weight="1">
-        </Button>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="15dp"
-            android:layout_weight="0"
-            android:text="SHOP NOW"
-            android:textSize="28dp"
-            android:textAlignment="center"
-            android:fontFamily="@font/montserrat_extrabold"
-            android:textColor="@color/darkpink"
-            >
-        </TextView>
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="2dp"
-            android:layout_gravity="center"
-            android:layout_marginRight="25dp"
-            android:backgroundTint="@color/darkpink"
-            android:layout_weight="1">
-        </Button>
-
-
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="5dp"
-            android:fontFamily="@font/montserrat_bold"
-            android:text="Categories"
-            android:textColor="@color/semiblack"
-            android:textSize="18sp" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/categories"
-            android:layout_marginVertical="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            tools:itemCount="1"
-            tools:listitem="@layout/categories" />
-
-    </LinearLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="1"
-        tools:itemCount="8"
-        tools:listitem="@layout/products_shop" />
+        android:layout_marginTop="20dp">
 
-</LinearLayout>
-</ScrollView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="10dp"
+                android:orientation="horizontal">
+
+                <!-- Existing Home LinearLayout -->
+                <LinearLayout
+                    android:id="@+id/home"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/homeMenu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:src="@drawable/orders" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Orders"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:textSize="12sp"
+                        android:textColor="@color/semiblack"
+                        android:gravity="center" />
+                </LinearLayout>
+
+                <!-- New LinearLayouts -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:src="@drawable/shipping_info" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Shipping Info"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:textSize="12sp"
+                        android:textColor="@color/semiblack"
+                        android:gravity="center" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:src="@drawable/vouchers" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Home"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:textSize="12sp"
+                        android:textColor="@color/semiblack"
+                        android:gravity="center" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:src="@drawable/loc" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Address"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:textSize="12sp"
+                        android:textColor="@color/semiblack"
+                        android:gravity="center" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginVertical="10dp"
+                android:layout_gravity="center">
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="25dp"
+                    android:backgroundTint="@color/darkpink"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_weight="0"
+                    android:text="SHOP NOW"
+                    android:textSize="28sp"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/montserrat_extrabold"
+                    android:textColor="@color/darkpink" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="25dp"
+                    android:backgroundTint="@color/darkpink"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="5dp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="Categories"
+                    android:textColor="@color/semiblack"
+                    android:textSize="18sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/categories"
+                    android:layout_marginVertical="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    tools:itemCount="1"
+                    tools:listitem="@layout/categories" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:itemCount="8"
+                tools:listitem="@layout/products_shop" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>
