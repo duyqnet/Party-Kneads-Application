@@ -37,9 +37,6 @@ public class Add_Items extends Fragment {
     final int GALLERY_REQ_CODE = 1000;
     Uri selectedImageUri;
 
-    // Counter for unique product IDs
-    private int productCounter = 1;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -63,12 +60,12 @@ public class Add_Items extends Fragment {
         binding.categgories.setAdapter(adapter);
 
         binding.btnAddItem.setOnClickListener(v -> {
-            String productId = "product" + productCounter++; // Generate unique ID
             if (selectedImageUri != null) {
+                String productId = String.valueOf(System.currentTimeMillis()); // Use current time as unique ID
                 uploadImageToFirebase(selectedImageUri, productId);
             } else {
-                // If no image selected, directly save product info with the unique ID
-                saveProductDataToFirebase(null, productId);
+                // If no image selected, directly save product info with a unique ID
+                saveProductDataToFirebase(null);
             }
         });
     }
@@ -107,8 +104,8 @@ public class Add_Items extends Fragment {
                 // Get the download URL of the image
                 String imageUrl = uri.toString();
 
-                // Save product info and image URL to Firestore with the unique product ID
-                saveProductDataToFirebase(imageUrl, productId);
+                // Save product info and image URL to Firestore
+                saveProductDataToFirebase(imageUrl);
             });
         }).addOnFailureListener(e -> {
             // Handle any errors
@@ -116,26 +113,27 @@ public class Add_Items extends Fragment {
         });
     }
 
-    private void saveProductDataToFirebase(@Nullable String imageUrl, String productId) {
+    private void saveProductDataToFirebase(@Nullable String imageUrl) {
         // Retrieve the entered text from input fields
         String productName = binding.productName.getText().toString();
         String productPrice = binding.productPrice.getText().toString();
         String productDescription = binding.description.getText().toString();
+        String productCategory = binding.categgories.getText().toString();
 
         // Prepare the data to be saved
         Map<String, Object> product = new HashMap<>();
-        product.put("id", productId); // Add the unique product ID
         product.put("name", productName);
         product.put("price", productPrice);
         product.put("description", productDescription);
+        product.put("categories", productCategory);
         if (imageUrl != null) {
             product.put("imageUrl", imageUrl);
         }
 
-        // Save to Firestore with custom document ID
+        // Save to Firestore with a new document ID
         FirebaseFirestore db = FirebaseFirestore.getInstance(); // No arguments needed
-        db.collection("products").document(productId).set(product)
-                .addOnSuccessListener(aVoid -> {
+        db.collection("products").add(product) // Using add() instead of document(productId)
+                .addOnSuccessListener(documentReference -> {
                     // Successfully added the product
                     Toast.makeText(getActivity(), "Successfully added item", Toast.LENGTH_SHORT).show();
                 })
@@ -144,6 +142,4 @@ public class Add_Items extends Fragment {
                     Toast.makeText(getContext(), "Error adding item: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
     }
-
-
 }
