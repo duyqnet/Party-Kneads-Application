@@ -60,12 +60,20 @@ public class Add_Items extends Fragment {
         binding.categgories.setAdapter(adapter);
 
         binding.btnAddItem.setOnClickListener(v -> {
-            if (selectedImageUri != null) {
+            String productName = binding.productName.getText().toString().trim();
+            String productPrice = binding.productPrice.getText().toString().trim();
+            String productDescription = binding.description.getText().toString().trim();
+            String productCategory = binding.categgories.getText().toString().trim();
+
+            // Check if any of the fields are empty
+            if (productName.isEmpty() || productPrice.isEmpty() || productDescription.isEmpty() || productCategory.isEmpty()) {
+                Toast.makeText(getContext(), "All fields must be filled up!", Toast.LENGTH_SHORT).show();
+            } else if (selectedImageUri == null) {
+                // If no image is selected, show a warning
+                Toast.makeText(getContext(), "An image must be uploaded!", Toast.LENGTH_SHORT).show();
+            } else {
                 String productId = String.valueOf(System.currentTimeMillis()); // Use current time as unique ID
                 uploadImageToFirebase(selectedImageUri, productId);
-            } else {
-                // If no image selected, directly save product info with a unique ID
-                saveProductDataToFirebase(null);
             }
         });
     }
@@ -136,10 +144,21 @@ public class Add_Items extends Fragment {
                 .addOnSuccessListener(documentReference -> {
                     // Successfully added the product
                     Toast.makeText(getActivity(), "Successfully added item", Toast.LENGTH_SHORT).show();
+                    // Reset the form fields
+                    resetForm();
                 })
                 .addOnFailureListener(e -> {
                     Log.e("Firestore Error", "Error adding item", e);
                     Toast.makeText(getContext(), "Error adding item: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
+    }
+
+    private void resetForm() {
+        binding.productName.setText("");
+        binding.productPrice.setText("");
+        binding.description.setText("");
+        binding.categgories.setText("");
+        binding.itemImg.setImageURI(null);
+        selectedImageUri = null;
     }
 }
