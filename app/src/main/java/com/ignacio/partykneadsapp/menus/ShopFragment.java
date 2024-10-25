@@ -60,8 +60,8 @@ public class ShopFragment extends Fragment {
         RecyclerView productsRecyclerView = binding.recyclerView;
         productsRecyclerView.setLayoutManager(new GridLayoutManager(requireContext(), 2)); // 2 columns
 
-        // Initialize the adapter with an empty list
-        productShopAdapter = new ProductShopAdapter(new ArrayList<>());
+        // Initialize the adapter with an empty list and the fragment's context
+        productShopAdapter = new ProductShopAdapter(requireActivity(), new ArrayList<>());
         productsRecyclerView.setAdapter(productShopAdapter);
 
         // Setup categories
@@ -94,9 +94,9 @@ public class ShopFragment extends Fragment {
         categoriesModelList.add(new CategoriesModel(R.drawable.confetti, "Confetti"));
 
         // Initialize adapter and layout manager for categories
-        categoriesAdapter = new CategoriesAdapter(getActivity(), categoriesModelList);
+        categoriesAdapter = new CategoriesAdapter(requireActivity(), categoriesModelList);
         categories.setAdapter(categoriesAdapter);
-        categories.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
+        categories.setLayoutManager(new LinearLayoutManager(requireActivity(), RecyclerView.HORIZONTAL, false));
         categories.setHasFixedSize(true);
         categories.setNestedScrollingEnabled(false);
     }
@@ -109,12 +109,19 @@ public class ShopFragment extends Fragment {
                         List<ProductShopModel> productsList = new ArrayList<>();
 
                         for (QueryDocumentSnapshot document : task.getResult()) {
+                            // Retrieve the document ID
+                            String id = document.getId(); // Get the document ID
+
+                            // Retrieve the necessary fields from the document
                             String imageUrl = document.getString("imageUrl");
                             String name = document.getString("name");
                             String price = document.getString("price"); // Price as String
+                            String description = document.getString("description"); // Get description
+                            String rate = document.getString("rate"); // Get rate
+                            String numreviews = document.getString("numreviews"); // Get number of reviews
 
                             // Create a ProductShopModel
-                            productsList.add(new ProductShopModel(imageUrl, name, price));
+                            productsList.add(new ProductShopModel(id, imageUrl, name, price, description, rate, numreviews));
                         }
 
                         // Update the adapter with the fetched data
@@ -124,5 +131,4 @@ public class ShopFragment extends Fragment {
                     }
                 });
     }
-
 }
