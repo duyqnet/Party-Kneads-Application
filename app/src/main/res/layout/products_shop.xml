@@ -50,7 +50,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat_extrabold"
                         android:textColor="@color/semiblack"
-                        android:textSize="18sp" />
+                        android:textSize="16sp" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -82,7 +82,7 @@
                         android:text="P 567.00"
                         android:layout_marginBottom="15dp"
                         android:textColor="@color/semiblack"
-                        android:textSize="20sp" />
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -99,7 +99,7 @@
                         android:padding="10dp"
                         android:text="78 sold"
                         android:textColor="@color/grey"
-                        android:textSize="14sp" />
+                        android:textSize="12sp" />
                 </LinearLayout>
             </FrameLayout>
         </LinearLayout>
