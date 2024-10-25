@@ -5,6 +5,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -59,9 +61,8 @@ public class HomePageFragment extends Fragment{
                         .commit();
             });
             binding.profile.setOnClickListener(v -> {
-                getParentFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_cont, new ProfileFragment())
-                        .commit();
+                NavController navController = Navigation.findNavController(requireView());
+                navController.navigate(R.id.action_homePageFragment_to_profileFragment);
             });
 
     }

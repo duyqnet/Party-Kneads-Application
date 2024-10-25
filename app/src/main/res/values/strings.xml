@@ -3,7 +3,6 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="terms"><u>Terms and Conditions</u></string>
-    <string name="Home">Home Page</string>
     <string name="open_nav">Open Navigation Drawer</string>
     <string name="close_nav">Close Navigation Drawer</string>
     <string name="facebook_app_id">460707086403142</string>
@@ -12,6 +11,12 @@
     <string name="default_web_client_id">839073691480-k5c063opqd9ukt2ti1r6u0nrcdjb1tkq.apps.googleusercontent.com</string>
     <string name="client_id">181080143587-uh9nda7ke6rghk4g63gk3a86bc600cub.apps.googleusercontent.com</string>
     <string name="readTerm">* I have read and agree with Party Kneads\' Terms and Conditions.</string>
+    <string name="Description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s</string>
+    <string name="Succcess_add">You have successfully added the item to your cart—let’s get this party started!</string>
+    <string name="Continue"><u>Continue Shopping \></u></string>
+    <string name="backToHome"><u>Home</u></string>
+    <string name="address">Blk 34 Lot 29 NHA Site 1 Brgy. Dayap, Calauan, Laguna</string>
+    <string name="success">Your order has been placed successfully! Get ready for an amazing party!</string>
 
 
     <string-array name="Categories">

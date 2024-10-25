@@ -9,7 +9,7 @@
     android:orientation="vertical"
     android:paddingHorizontal="7dp"
     android:id="@+id/clayout"
-    tools:context=".menus.ShopFragment">
+    tools:context=".MyProductFragment">
 
     <!-- Search bar that remains fixed -->
     <LinearLayout
@@ -74,28 +74,7 @@
                         android:gravity="center" />
                 </LinearLayout>
 
-                <!-- New LinearLayouts -->
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center">
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:src="@drawable/shipping_info" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Shipping Info"
-                        android:fontFamily="@font/montserrat_bold"
-                        android:textSize="12sp"
-                        android:textColor="@color/semiblack"
-                        android:gravity="center" />
-                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -112,7 +91,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Vouchers"
+                        android:text="Add Voucher"
                         android:fontFamily="@font/montserrat_bold"
                         android:textSize="12sp"
                         android:textColor="@color/semiblack"
@@ -129,12 +108,12 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
-                        android:src="@drawable/loc" />
+                        android:src="@drawable/rate" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Address"
+                        android:text="Ratings"
                         android:fontFamily="@font/montserrat_bold"
                         android:textSize="12sp"
                         android:textColor="@color/semiblack"
@@ -162,11 +141,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
                     android:layout_weight="0"
-                    android:text="SHOP NOW"
-                    android:textSize="28sp"
-                    android:textAlignment="center"
                     android:fontFamily="@font/montserrat_extrabold"
-                    android:textColor="@color/darkpink" />
+                    android:text="MY PRODUCT"
+                    android:textAlignment="center"
+                    android:textColor="@color/darkpink"
+                    android:textSize="28sp" />
 
                 <Button
                     android:layout_width="0dp"

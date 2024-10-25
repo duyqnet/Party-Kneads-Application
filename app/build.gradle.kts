@@ -1,5 +1,7 @@
 import com.android.build.api.dsl.Packaging
 
+
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.google.gms.google.services)
@@ -60,6 +62,7 @@ dependencies {
     implementation(libs.firebase.database)
     implementation(libs.firebase.storage)
     implementation(libs.firebase.firestore)
+    implementation(libs.core)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
@@ -72,6 +75,8 @@ dependencies {
     implementation ("com.google.firebase:firebase-auth: 21.2.0")
     implementation ("androidx.viewpager2:viewpager2:1.0.0")
     implementation ("com.google.firebase:firebase-firestore-ktx:25.1.0")
+    implementation ("de.hdodenhof:circleimageview:3.1.0")// Check for the latest version
+
 
 
 

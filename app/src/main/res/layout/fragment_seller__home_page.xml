@@ -67,12 +67,12 @@
                 android:id="@+id/heartMenu"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:src="@drawable/favorite" />
+                android:src="@drawable/order" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Likes"
+                android:text="Orders"
                 android:fontFamily="@font/montserrat_medium"
                 android:textSize="14sp"
                 android:textColor="@color/babypink"

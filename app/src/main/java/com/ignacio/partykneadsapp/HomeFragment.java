@@ -166,16 +166,6 @@ public class HomeFragment extends Fragment implements NavigationBarView.OnItemSe
             fetchUserFirstName(userId); // Call method to fetch user data
         }
 
-        btnLogout.setOnClickListener(v -> {
-            FirebaseUser currentUser = mAuth.getCurrentUser();
-            FirebaseAuth.getInstance().signOut();
-            NavController navController = Navigation.findNavController(requireView());
-            if (Objects.equals(currentUser.getEmail(), "sweetkatrinabiancaignacio@gmail.com")) {
-                navController.navigate(R.id.action_seller_HomePageFragment_to_loginFragment);
-            } else {
-                navController.navigate(R.id.action_homePageFragment_to_loginFragment);
-            }
-        });
 
         cl = view.findViewById(R.id.clayout);
         cl.setOnClickListener(v -> {

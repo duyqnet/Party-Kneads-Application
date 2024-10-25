@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/pinkbg"
+    android:orientation="vertical"
+    tools:context=".Cake_Description">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="45dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/back_bg" />
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="35dp"
+                android:layout_marginRight="2dp"
+                android:layout_gravity="center"
+                android:src="@drawable/back"
+                />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/btnHeart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end">
+
+            <Button
+                android:layout_width="40dp"
+                android:layout_height="45dp"
+                android:layout_gravity="start"
+                android:backgroundTint="@color/semiwhite" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/heart_pink" />
+        </FrameLayout>
+
+        <ImageView
+            android:id="@+id/productImage"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_gravity="center|bottom"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/strawberry" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="600dp"
+            android:layout_gravity="bottom"
+            android:src="@drawable/whitecont" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/footer"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/minus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="0dp"
+                    android:paddingHorizontal="15dp"
+                    android:textSize="24sp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="-" />
+
+                <TextView
+                    android:id="@+id/quantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:paddingHorizontal="15dp"
+                    android:text="0"
+                    android:textSize="24sp" />
+                <TextView
+                    android:id="@+id/plus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="24sp"
+                    android:paddingHorizontal="15dp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="+" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:layout_marginHorizontal="20dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+            <TextView
+                android:id="@+id/productName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="24sp"
+                android:textColor="@color/semiblack"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Vanilla Bean Cake"/>
+
+                <TextView
+                    android:id="@+id/productPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:gravity="center|end"
+                    android:text="P250.00"
+                    android:textColor="@color/darkpink"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Cake Sizes:"
+            android:fontFamily="@font/montserrat_bold"
+            android:textSize="18sp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/cakeSizes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                tools:listitem="@layout/cake_sizes"
+                tools:itemCount="1" />
+
+            <TextView
+                android:id="@+id/productDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/montserrat_semibold"
+                android:text="@string/Description"
+                android:textColor="@color/semiblack"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ratings"
+                    android:layout_margin="0dp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textColor="@color/semiblack"
+                    android:textSize="18sp"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/star"
+                    android:layout_marginLeft="10dp" />
+
+                <TextView
+                    android:id="@+id/ratePercent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/semiblack"
+                    android:text="4.8"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:layout_margin="2dp"/> <!-- No margins -->
+
+                <TextView
+                    android:id="@+id/numReviews"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:textColor="@color/grey"
+                    android:text="{210 Reviews)"
+                    android:layout_margin="5dp"/> <!-- No margins -->
+
+                <TextView
+                    android:id="@+id/btnViewAll"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="View All >"
+                    android:gravity="center|end"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:textColor="@color/grey"
+                    android:textSize="14sp"
+                    android:layout_margin="0dp"/> <!-- No margins -->
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/footerpink">
+
+               <androidx.recyclerview.widget.RecyclerView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   tools:listitem="@layout/ratecomment"
+                   tools:itemCount="1"/>
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+
+                <!-- Add to Cart Button with Icon -->
+                <Button
+                    android:id="@+id/btnAddtoCart"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/pink"
+                    android:text="Add to cart"
+                    android:drawableLeft="@drawable/addtocart"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:textColor="@android:color/white"
+                    android:layout_marginEnd="10dp"/>
+
+                <!-- Buy Now Button with Icon -->
+                <Button
+                    android:id="@+id/btnBuyNow"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/darkpink"
+                    android:text="Buy Now"
+                    android:drawableLeft="@drawable/buynowcart"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:textColor="@android:color/white"
+                    android:layout_marginStart="10dp"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

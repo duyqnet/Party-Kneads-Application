@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="10dp"
+    android:id="@+id/ratescardview"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/footerpink"
+        android:padding="15dp">
+
+        <!-- Horizontal Layout for Profile, User, and Heart -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/userProfile"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/person" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtUser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bianca Ignacio"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textSize="16sp"
+                    android:textColor="@color/semiblack" />
+
+                <!-- Adjusted RatingBar -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    >
+                    <RatingBar
+                        android:id="@+id/rating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="?android:attr/ratingBarStyleSmall"
+                        android:numStars="5"
+                        android:stepSize="0.1"
+                        android:rating="5"
+                        android:isIndicator="true" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/btnHeart"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/heart_pink"
+                android:layout_gravity="center_vertical" />
+        </LinearLayout>
+
+        <!-- Description Text -->
+        <TextView
+            android:id="@+id/userRateComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Description"
+            android:fontFamily="@font/montserrat_medium"
+            android:textColor="@color/semiblack"
+            android:paddingVertical="10dp" />
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

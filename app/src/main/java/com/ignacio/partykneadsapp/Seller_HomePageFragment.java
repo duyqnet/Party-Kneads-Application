@@ -5,6 +5,9 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +31,7 @@ public class Seller_HomePageFragment extends Fragment {
 
         if (savedInstanceState == null) {
             getParentFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_contseller, new HomeFragment()) // assuming Frag1 is FragmentOne
+                    .replace(R.id.fragment_contseller, new SellerHome()) // assuming Frag1 is FragmentOne
                     .commit();
         }
     }
@@ -39,7 +42,7 @@ public class Seller_HomePageFragment extends Fragment {
 
         binding.home.setOnClickListener(v -> {
             getParentFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_contseller, new HomeFragment())
+                    .replace(R.id.fragment_contseller, new SellerHome())
                     .commit();
         });
         binding.likes.setOnClickListener(v -> {
@@ -59,11 +62,13 @@ public class Seller_HomePageFragment extends Fragment {
                     .replace(R.id.fragment_contseller, new NotificationFragment())
                     .commit();
         });
+
         binding.profile.setOnClickListener(v -> {
-            getParentFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_contseller, new ProfileFragment())
-                    .commit();
+            NavController navController = Navigation.findNavController(requireView());
+            navController.navigate(R.id.action_seller_HomePageFragment_to_profileFragment);
         });
+
+
 
     }
 

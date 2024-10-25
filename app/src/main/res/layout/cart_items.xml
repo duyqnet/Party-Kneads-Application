@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:backgroundTint="@color/footerpink"
+    android:layout_marginBottom="20dp"
+    android:layout_height="170dp">
+
+    <FrameLayout
+        android:layout_width="50dp"
+        android:layout_height="80dp"
+        android:layout_gravity="end|bottom">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/drip_lower" />
+
+    </FrameLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginLeft="10dp">
+
+        <CheckBox
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="130dp"
+            android:src="@drawable/strawberry"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vanilla Bean Cake"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:textSize="16sp"
+                android:textColor="@color/semiblack"/>
+            
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sub Categories"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/montserrat_semibold"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/star" />
+
+                <TextView
+                    android:id="@+id/ratePercent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/semiblack"
+                    android:text="4.8"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:layout_margin="2dp"/> <!-- No margins -->
+
+                <TextView
+                    android:id="@+id/numReviews"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:textColor="@color/grey"
+                    android:text="{210 Reviews)" />
+            </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="80dp"
+                    android:layout_height="28dp"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="1" >
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" >
+                            <Button
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:backgroundTint="@color/pink"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true" />
+                        </RelativeLayout>
+                        <ImageView
+                            android:layout_width="13dp"
+                            android:layout_height="13dp"
+                            android:src="@drawable/minus"
+                            android:layout_centerInParent="true"/>
+                    </RelativeLayout>
+
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+
+                            android:textStyle="bold"
+                            android:textSize="14sp"
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            android:text="0"/>
+
+                    <FrameLayout
+                        android:layout_width="5dp"
+                        android:layout_height="match_parent" />
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="1" >
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" >
+                            <Button
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:backgroundTint="@color/pink"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true" />
+                        </RelativeLayout>
+                        <ImageView
+                            android:layout_width="13dp"
+                            android:layout_height="13dp"
+                            android:src="@drawable/addd"
+                            android:layout_centerInParent="true"/>
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            <TextView
+                android:layout_width="180dp"
+                android:layout_height="match_parent"
+                android:gravity="bottom|end"
+                android:layout_marginTop="10dp"
+                android:textSize="18sp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="P 1,232.00" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+
+        <Button
+            android:layout_width="30dp"
+            android:layout_height="40dp"
+            android:backgroundTint="@color/darkpink"
+            app:cornerRadius="10dp"
+            />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/delete"
+                />
+        </FrameLayout>
+    </LinearLayout>
+
+
+
+</androidx.cardview.widget.CardView>

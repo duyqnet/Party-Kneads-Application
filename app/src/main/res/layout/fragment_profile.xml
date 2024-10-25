@@ -1,21 +1,218 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/loginbgg"
+    android:orientation="vertical"
+    android:layout_gravity="center"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".menus.NotificationFragment">
 
-    <TextView
+    <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Profile Fragment"
-        android:textSize="23sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="50dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintTop_toTopOf="parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/back_bg" />
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="2dp"
+            android:src="@drawable/back" />
+
+    </FrameLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="20dp">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:fontFamily="@font/montserrat_extrabold"
+            android:text="PROFILE"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:textAlignment="center"
+            android:textColor="@color/darkpink"
+            android:textSize="28sp" />
+
+    <FrameLayout
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/back_bg"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/userProfile"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bong" />
+
+        <TextView
+            android:id="@+id/btnchangeProfile"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/back_bg"
+            android:layout_gravity="end|bottom"/>
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/camera"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"/>
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/txtUserName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Biacna Ignacio"
+        android:fontFamily="@font/montserrat_bold"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"
+        android:textAlignment="center"
+        android:textColor="@color/semiblack"/>
+
+        <TextView
+            android:id="@+id/txtUserEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="sweetkatrinabiancaignacio@gmail.com"
+            android:fontFamily="@font/montserrat_bold"
+            android:textSize="16sp"
+            android:textAlignment="center"
+            android:textColor="@color/grey"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/logincont" >
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/semiwhite"
+                app:cornerRadius="10dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="5dp"
+                android:text="Manage Profile"
+                android:textAlignment="textStart"
+                android:fontFamily="@font/montserrat_medium"
+                android:drawableLeft="@drawable/profile"
+                android:drawableRight="@drawable/nextt"
+                android:textColor="@color/semiblack" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/semiwhite"
+                app:cornerRadius="10dp"
+                android:layout_marginBottom="5dp"
+                android:text="Vouchers"
+                android:textAlignment="textStart"
+                android:fontFamily="@font/montserrat_medium"
+                android:drawableLeft="@drawable/discount"
+                android:drawableRight="@drawable/nextt"
+                android:textColor="@color/semiblack"
+                 />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/semiwhite"
+                app:cornerRadius="10dp"
+
+                android:layout_marginBottom="5dp"
+                android:text="History"
+                android:textAlignment="textStart"
+                android:fontFamily="@font/montserrat_medium"
+                android:drawableLeft="@drawable/round_history_24"
+                android:drawableRight="@drawable/nextt"
+                android:textColor="@color/semiblack" />
+
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/semiwhite"
+                app:cornerRadius="10dp"
+                android:text="Support"
+                android:layout_marginBottom="5dp"
+                android:textAlignment="textStart"
+                android:fontFamily="@font/montserrat_medium"
+                android:drawableLeft="@drawable/support_pink"
+                android:drawableRight="@drawable/nextt"
+                android:textColor="@color/semiblack" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/semiwhite"
+                app:cornerRadius="10dp"
+                android:layout_marginBottom="5dp"
+                android:text="Terms and Conditions"
+                android:textAlignment="textStart"
+                android:fontFamily="@font/montserrat_medium"
+                android:drawableLeft="@drawable/terms_24"
+                android:drawableRight="@drawable/nextt"
+                android:textColor="@color/semiblack" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/semiwhite"
+                app:cornerRadius="10dp"
+                android:layout_marginBottom="20dp"
+                android:text="About"
+                android:textAlignment="textStart"
+                android:fontFamily="@font/montserrat_medium"
+                android:drawableLeft="@drawable/about"
+                android:drawableRight="@drawable/nextt"
+                android:textColor="@color/semiblack" />
+
+            <Button
+                android:id="@+id/btnLogout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/darkpink"
+                app:cornerRadius="10dp"
+                android:layout_marginBottom="20dp"
+                android:text="Logout"
+                android:textSize="16sp"
+                android:layout_marginTop="20dp"
+                android:textAlignment="textStart"
+                android:fontFamily="@font/montserrat_bold"
+                android:drawableLeft="@drawable/baseline_logout_24"
+                android:textColor="@color/semiwhite" />
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
