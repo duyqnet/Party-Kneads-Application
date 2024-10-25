@@ -52,9 +52,8 @@ public class Seller_HomePageFragment extends Fragment {
         });
 
         binding.addItem.setOnClickListener(v -> {
-            getParentFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_contseller, new Add_Items())
-                    .commit();
+            NavController navController = Navigation.findNavController(requireView());
+            navController.navigate(R.id.action_seller_HomePageFragment_to_add_Items);
         });
 
         binding.notif.setOnClickListener(v -> {

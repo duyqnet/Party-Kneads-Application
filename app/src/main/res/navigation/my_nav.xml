@@ -123,6 +123,9 @@
         <action
             android:id="@+id/action_seller_HomePageFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_seller_HomePageFragment_to_add_Items"
+            app:destination="@id/add_Items" />
     </fragment>
     <fragment
         android:id="@+id/tandCFragment"
@@ -150,5 +153,14 @@
         <action
             android:id="@+id/action_profileFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/add_Items"
+        android:name="com.ignacio.partykneadsapp.menus.Add_Items"
+        android:label="fragment_add__items"
+        tools:layout="@layout/fragment_add__items" >
+        <action
+            android:id="@+id/action_add_Items_to_seller_HomePageFragment"
+            app:destination="@id/seller_HomePageFragment" />
     </fragment>
 </navigation>

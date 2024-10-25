@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.provider.MediaStore;
 import android.util.Log;
@@ -75,6 +77,11 @@ public class Add_Items extends Fragment {
                 String productId = String.valueOf(System.currentTimeMillis()); // Use current time as unique ID
                 uploadImageToFirebase(selectedImageUri, productId);
             }
+        });
+
+        binding.btnBack.setOnClickListener(v -> {
+            NavController navController = Navigation.findNavController(requireView());
+            navController.navigate(R.id.action_add_Items_to_seller_HomePageFragment);
         });
     }
 
