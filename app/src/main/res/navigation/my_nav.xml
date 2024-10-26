@@ -41,6 +41,9 @@
         <action
             android:id="@+id/action_loginFragment_to_homePageFragment"
             app:destination="@id/homePageFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_seller_HomePageFragment"
+            app:destination="@id/seller_HomePageFragment" />
     </fragment>
     <fragment
         android:id="@+id/termsFragment2"
@@ -52,6 +55,9 @@
         <action
             android:id="@+id/action_termsFragment2_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_termsFragment2_to_tandCFragment"
+            app:destination="@id/tandCFragment" />
     </fragment>
     <fragment
         android:id="@+id/personaldetailsFragment"
@@ -75,9 +81,6 @@
         <action
             android:id="@+id/action_createAccountFragment4_to_OTPFragment"
             app:destination="@id/OTPFragment" />
-        <action
-            android:id="@+id/action_createAccountFragment4_to_homePageFragment"
-            app:destination="@id/homePageFragment" />
 
     </fragment>
     <fragment
@@ -88,6 +91,10 @@
         <action
             android:id="@+id/action_homePageFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_homePageFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+
     </fragment>
 
     <fragment
@@ -98,5 +105,62 @@
         <action
             android:id="@+id/action_OTPFragment_to_homePageFragment"
             app:destination="@id/homePageFragment" />
+        <action
+            android:id="@+id/action_OTPFragment_to_seller_HomePageFragment"
+            app:destination="@id/seller_HomePageFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/seller_HomePageFragment"
+        android:name="com.ignacio.partykneadsapp.Seller_HomePageFragment"
+        android:label="Seller_HomePageFragment" >
+        <action
+            android:id="@+id/action_seller_HomePageFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_seller_HomePageFragment_to_myProductFragment"
+            app:destination="@id/myProductFragment" />
+        <action
+            android:id="@+id/action_seller_HomePageFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_seller_HomePageFragment_to_add_Items"
+            app:destination="@id/add_Items" />
+    </fragment>
+    <fragment
+        android:id="@+id/tandCFragment"
+        android:name="com.ignacio.partykneadsapp.TandCFragment"
+        android:label="TandCFragment" >
+        <action
+            android:id="@+id/action_tandCFragment_to_termsFragment2"
+            app:destination="@id/termsFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/myProductFragment"
+        android:name="com.ignacio.partykneadsapp.MyProductFragment"
+        android:label="fragment_my_product"
+        tools:layout="@layout/fragment_my_product" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.ignacio.partykneadsapp.menus.ProfileFragment"
+        android:label="ProfileFragment" >
+        <action
+            android:id="@+id/action_profileFragment_to_homePageFragment"
+            app:destination="@id/homePageFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_seller_HomePageFragment"
+            app:destination="@id/seller_HomePageFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/add_Items"
+        android:name="com.ignacio.partykneadsapp.menus.Add_Items"
+        android:label="fragment_add__items"
+        tools:layout="@layout/fragment_add__items" >
+        <action
+            android:id="@+id/action_add_Items_to_seller_HomePageFragment"
+            app:destination="@id/seller_HomePageFragment" />
     </fragment>
 </navigation>

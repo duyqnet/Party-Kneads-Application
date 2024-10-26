@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
@@ -48,7 +49,7 @@ public class personaldetailsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        SharedViewModel sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);  // Shared across fragments
         etfname = view.findViewById(R.id.etfName);
         etlname = view.findViewById(R.id.etPassCA);
         btnCont = view.findViewById(R.id.btnCont);
@@ -72,6 +73,9 @@ public class personaldetailsFragment extends Fragment {
                 if(TextUtils.isEmpty(fname) || TextUtils.isEmpty(lname)) {
                     Toast.makeText(getActivity(), "Please fill up all field", Toast.LENGTH_SHORT).show();
                 } else {
+
+                    sharedViewModel.setNames(fname, lname);
+
                     NavController navController = Navigation.findNavController(view);
                     navController.navigate(R.id.action_personaldetailsFragment_to_createAccountFragment4);
                 }

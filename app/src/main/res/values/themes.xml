@@ -3,7 +3,18 @@
     <style name="Base.Theme.PartyKneadsApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:editTextColor">@color/semiblack</item>
+        <item name="android:textColorHint">@android:color/black</item>
     </style>
 
     <style name="Theme.PartyKneadsApp" parent="Base.Theme.PartyKneadsApp" />
+
+    <style name="DialogAnimation">
+        <!-- Enter animation for the dialog -->
+        <item name="android:windowEnterAnimation">@anim/slide_in</item>
+
+        <!-- Exit animation for the dialog -->
+        <item name="android:windowExitAnimation">@anim/slide_out</item>
+    </style>
+
 </resources>

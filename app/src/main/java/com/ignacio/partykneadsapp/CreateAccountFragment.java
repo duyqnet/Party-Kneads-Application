@@ -55,6 +55,7 @@ public class CreateAccountFragment extends Fragment {
         btnCont = view.findViewById(R.id.btnCont);
         btnBack = view.findViewById(R.id.btnBack);
         cl = view.findViewById(R.id.clayout);
+        String fname, lname;
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,6 +89,7 @@ public class CreateAccountFragment extends Fragment {
                     Bundle bundle = new Bundle();
                     bundle.putString("email", email);
                     bundle.putString("password", password);
+
 
                     NavController navController = Navigation.findNavController(requireView());
                     navController.navigate(R.id.action_createAccountFragment4_to_OTPFragment, bundle);

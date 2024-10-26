@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginRight="20dp"
+    app:cardCornerRadius="10dp">
+
+
+
+    <FrameLayout
+        android:layout_width="230dp"
+        android:layout_height="320dp"
+        android:background="@color/footerpink"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/btnHeart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp">
+
+            <Button
+                android:layout_width="40dp"
+                android:layout_height="45dp"
+
+                android:backgroundTint="@color/semiwhite"
+                android:layout_gravity="start"/>
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/heart_pink"
+                android:layout_gravity="center"/>
+
+
+        </FrameLayout>
+
+        <ImageView
+            android:layout_width="75dp"
+            android:layout_height="120dp"
+            android:layout_gravity="end"
+            android:src="@drawable/drip_right" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="30dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/productImage"
+                android:layout_width="wrap_content"
+                android:layout_height="130dp"
+                android:src="@drawable/strawberry" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                >
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/item_bg" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:paddingHorizontal="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/productName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_extrabold"
+                        android:textColor="@color/semiblack"
+                        android:textSize="18dp"
+                        android:text="Vanilla Bean Cake" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="25dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/star"
+                            android:layout_gravity="center"/>
+
+
+                        <TextView
+                            android:id="@+id/itemRating"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="5.0 (100)"
+                            android:layout_marginLeft="5dp"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/montserrat_semibold"
+                            android:textSize="12dp"
+                            android:textColor="@color/grey"/>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/itemPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="P 567.00"
+                        android:textSize="20dp"
+                        android:textColor="@color/semiblack"
+                        android:fontFamily="@font/montserrat_bold"/>
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="end">
+
+                    <TextView
+                        android:id="@+id/itemSold"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="end|bottom"
+                        android:padding="10dp"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:text="78 sold"
+                        android:textColor="@color/grey"
+                        android:textSize="14dp" />
+                </LinearLayout>
+            </FrameLayout>
+
+        </LinearLayout>
+
+
+
+
+    </FrameLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</androidx.cardview.widget.CardView>

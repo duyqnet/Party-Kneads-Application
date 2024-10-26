@@ -116,7 +116,7 @@
         android:id="@+id/btnNext"
         android:layout_width="53dp"
         android:layout_height="49dp"
-        android:src="@drawable/next"
+        android:src="@drawable/nextt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.927"

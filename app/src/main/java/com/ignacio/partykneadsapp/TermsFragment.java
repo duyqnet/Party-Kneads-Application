@@ -27,7 +27,7 @@ public class TermsFragment extends Fragment {
     Switch switchTerms;
     Button btnCont;
     TextView btnBack;
-
+    TextView btnTerms;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +48,7 @@ public class TermsFragment extends Fragment {
         switchTerms = view.findViewById(R.id.switchTerms);
         btnCont = view.findViewById(R.id.btnCont);
         btnBack = view.findViewById(R.id.btnBack);
+        btnTerms = view.findViewById(R.id.btnTermsandConditions);
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,6 +69,15 @@ public class TermsFragment extends Fragment {
                 }
             }
         });
+
+        btnTerms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavController navController = Navigation.findNavController(view);
+                navController.navigate(R.id.action_termsFragment2_to_tandCFragment);  // Ensure you have this action
+            }
+        });
+
         TextView textView = view.findViewById(R.id.tvAgree);
         String text = getString(R.string.readTerm);
 

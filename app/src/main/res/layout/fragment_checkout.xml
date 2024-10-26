@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/pinkbg"
+    tools:context=".CheckoutFragment">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/back_bg" />
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="2dp"
+            android:src="@drawable/back" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/whitecont"
+            android:layout_width="match_parent"
+            android:layout_height="760dp"
+            android:layout_gravity="bottom"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/whitecont"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:paddingHorizontal="20dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginVertical="20dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toTopOf="@+id/whitecont"
+                    tools:layout_editor_absoluteX="0dp">
+
+                    <Button
+                        android:layout_width="0dp"
+                        android:layout_height="2dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="25dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/darkpink" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="15dp"
+                        android:layout_weight="0"
+                        android:fontFamily="@font/montserrat_extrabold"
+                        android:text="CHECKOUT"
+                        android:textAlignment="center"
+                        android:textColor="@color/darkpink"
+                        android:textSize="28sp" />
+
+                    <Button
+                        android:layout_width="0dp"
+                        android:layout_height="2dp"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="25dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/darkpink" />
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewCart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="220dp"
+                    android:nestedScrollingEnabled="false"
+                    tools:listitem="@layout/cart_items" />
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/semiwhite"
+                        android:layout_marginVertical="20dp"
+                        app:cornerRadius="10dp"
+                        app:strokeColor="@color/pink"
+                        android:text="Add Voucher"
+                        android:textAlignment="textStart"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:drawableLeft="@drawable/discount"
+                        android:drawableRight="@drawable/nextt"
+                        android:textColor="@color/semiblack"
+                        app:strokeWidth="2dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/footerpink"
+                    android:layout_marginTop="20dp"
+                    android:paddingVertical="15dp"
+                    android:paddingHorizontal="20dp"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Address"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:layout_marginBottom="10dp"/>
+
+                        <TextView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:background="@drawable/edit"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:textSize="16sp"
+                        android:text="@string/address" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="15dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/grey"
+                        android:text="Payment Method:"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:textSize="16sp"
+                        android:layout_weight="1"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/semiblack"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:text="Cash On Delivery" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/grey"
+                        android:text="Item Total"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:textSize="16sp"
+                        android:layout_weight="1"/>
+                    <TextView
+                        android:id="@+id/itemTotal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/semiblack"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:text="P 750.00" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/grey"
+                        android:text="Discount"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:textSize="16sp"
+                        android:layout_weight="1"/>
+                    <TextView
+                        android:id="@+id/discount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:textColor="@color/semiblack"
+                        android:text="P 750.00" />
+                </LinearLayout>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:layout_marginVertical="10dp"
+                    android:backgroundTint="@color/pink" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total Cost:"
+                        android:textColor="@color/grey"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:textSize="16sp"
+                        android:layout_weight="1"/>
+                    <TextView
+                        android:id="@+id/totalCost"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:textColor="@color/semiblack"
+                        android:text="P 750.00" />
+                </LinearLayout>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:backgroundTint="@color/pink"
+                    app:cornerRadius="20dp"
+                    android:text="Checkout"
+                    android:textAlignment="center"
+                    android:drawableLeft="@drawable/buynowcart"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+
+
+
+        </androidx.core.widget.NestedScrollView>
+    </FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
