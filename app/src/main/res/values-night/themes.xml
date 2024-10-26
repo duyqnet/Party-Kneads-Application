@@ -4,6 +4,8 @@
         <!-- Customize your dark theme here. -->
         <item name="android:editTextColor">@color/semiblack</item>
         <item name="android:textColorHint">@color/grey</item>
+        <item name="android:colorPrimary">@color/semiblack</item>
+        <item name="android:textColor">@color/semiblack</item>
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
     </style>
 </resources>

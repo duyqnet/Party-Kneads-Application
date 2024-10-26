@@ -5,6 +5,9 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
         <item name="android:editTextColor">@color/semiblack</item>
         <item name="android:textColorHint">@android:color/black</item>
+        <item name="android:colorPrimary">@color/semiblack</item>
+        <item name="android:textColor">@color/semiblack</item>
+
     </style>
 
     <style name="Theme.PartyKneadsApp" parent="Base.Theme.PartyKneadsApp" />
