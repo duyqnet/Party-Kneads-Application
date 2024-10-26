@@ -1,5 +1,6 @@
 package com.ignacio.partykneadsapp.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -39,7 +40,7 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ProductViewHolder holder, @SuppressLint("RecyclerView") int position) {
         ProductShopModel currentProduct = productList.get(position);
 
         // Bind data to the views
@@ -48,7 +49,7 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
 
         // Load product image using Glide
         Glide.with(holder.itemView.getContext())
-                .load(currentProduct.getImageUrl())
+                .load(currentProduct.getimageUrl())
                 .into(holder.productImage);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

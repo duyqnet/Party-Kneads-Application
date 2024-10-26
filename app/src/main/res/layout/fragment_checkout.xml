@@ -98,11 +98,10 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerViewCart"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:listitem="@layout/cart_items"
-                    tools:itemCount="1"
-                    android:nestedScrollingEnabled="false" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="220dp"
+                    android:nestedScrollingEnabled="false"
+                    tools:listitem="@layout/cart_items" />
 
                     <Button
                         android:layout_width="match_parent"
@@ -194,6 +193,7 @@
                         android:textSize="16sp"
                         android:layout_weight="1"/>
                     <TextView
+                        android:id="@+id/itemTotal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/semiblack"
@@ -215,6 +215,7 @@
                         android:textSize="16sp"
                         android:layout_weight="1"/>
                     <TextView
+                        android:id="@+id/discount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat_bold"
@@ -242,6 +243,7 @@
                         android:textSize="16sp"
                         android:layout_weight="1"/>
                     <TextView
+                        android:id="@+id/totalCost"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat_bold"

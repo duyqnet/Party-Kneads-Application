@@ -27,8 +27,12 @@ public class ProductShopModel implements Serializable {
         return id;
     }
 
-    public String getImageUrl() {
+    public String getimageUrl() {
         return imageUrl;
+    }
+
+    public void setimageUrl(String imageUrl) { // Add this setter
+        this.imageUrl = imageUrl;
     }
 
     public String getName() {
