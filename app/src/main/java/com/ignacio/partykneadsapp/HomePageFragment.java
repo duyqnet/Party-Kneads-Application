@@ -28,9 +28,12 @@ public class HomePageFragment extends Fragment{
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        boolean loadShopFragment = getArguments() != null && getArguments().getBoolean("loadShop", false);
+        Fragment fragmentToLoad = loadShopFragment ? new ShopFragment() : new HomeFragment();
+
         if (savedInstanceState == null) {
             getParentFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_cont, new HomeFragment()) // assuming Frag1 is FragmentOne
+                    .replace(R.id.fragment_cont, fragmentToLoad)
                     .commit();
         }
     }

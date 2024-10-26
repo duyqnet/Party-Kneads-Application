@@ -2,7 +2,12 @@ package com.ignacio.partykneadsapp;
 
 import android.app.Dialog;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -10,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,7 +40,7 @@ import java.util.List;
 public class Cake_Description extends Fragment {
 
     private TextView productName, productPrice, productDescription, ratePercent, numReviews;
-    private ImageView productImage;
+    private ImageView productImage, btnBack;
     private TextView minusButton, quantityTextView, plusButton; // Quantity controls
     private Button btnAddtoCart; // Add to Cart button
     private ProductShopModel productShopModel;
@@ -64,7 +70,7 @@ public class Cake_Description extends Fragment {
         productDescription = view.findViewById(R.id.productDescription);
         ratePercent = view.findViewById(R.id.ratePercent);
         numReviews = view.findViewById(R.id.numReviews);
-
+        btnBack = view.findViewById(R.id.btnBack);
         // Initialize quantity controls
         minusButton = view.findViewById(R.id.minus);
         quantityTextView = view.findViewById(R.id.quantity);
@@ -114,7 +120,18 @@ public class Cake_Description extends Fragment {
         selectedCakeSize = cakeSizes.get(0); // Bento Cake
         updateQuantityAndPrice(); // Initialize price display
 
+        btnBack.setOnClickListener(v -> {
+            NavController navController = Navigation.findNavController(requireView());
+            navController.navigate(R.id.action_cake_Description_to_homePageFragment);
+        });
+
+
         return view; // Return the inflated view
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
     }
 
     private void showAddToCartDialog() {
@@ -225,21 +242,21 @@ public class Cake_Description extends Fragment {
 
 
     private void goToCart() {
-        Fragment cartFragment = new CartFragment();
-        // Replace the current fragment with the CartFragment
-        getActivity().getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, cartFragment) // Use your actual container ID
-                .addToBackStack(null) // Add to back stack if you want to allow navigation back
-                .commit();
+        NavController navController = Navigation.findNavController(requireView());
+        navController.navigate(R.id.action_cake_Description_to_cartFragment);
     }
 
     private void goToShop() {
-        Fragment shopFragment = new ShopFragment(); // Ensure this matches your actual shop fragment class name
-        // Replace the current fragment with the shop fragment
-        getActivity().getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, shopFragment) // Use your actual container ID
-                .addToBackStack(null) // Add to back stack if you want to allow navigation back
-                .commit();
+
+        Fragment menuPageFragment = new HomePageFragment(); // replace with the name of your menu page fragment class
+
+        // Create a bundle with the flag to load ShopFragment
+        Bundle args = new Bundle();
+        args.putBoolean("loadShop", true);
+
+        // Replace the current fragment with the menu page fragment and pass the argument
+        NavController navController = Navigation.findNavController(requireView());
+        navController.navigate(R.id.action_cake_Description_to_homePageFragment, args);
     }
 
     @Override
