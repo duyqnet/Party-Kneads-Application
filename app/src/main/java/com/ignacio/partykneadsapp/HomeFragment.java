@@ -166,6 +166,11 @@ public class HomeFragment extends Fragment implements NavigationBarView.OnItemSe
             fetchUserFirstName(userId); // Call method to fetch user data
         }
 
+        binding.btnCart.setOnClickListener(v -> {
+            NavController navController = Navigation.findNavController(requireActivity(), R.id.fragment_cont);
+            navController.navigate(R.id.action_homePageFragment_to_cartFragment);
+        });
+
 
         cl = view.findViewById(R.id.clayout);
         cl.setOnClickListener(v -> {

@@ -12,6 +12,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.ignacio.partykneadsapp.adapters.CartAdapter;
 import com.ignacio.partykneadsapp.model.CartItemModel;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -22,31 +25,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CheckoutFragment extends Fragment {
-    private RecyclerView recyclerView; // Declare RecyclerView
-    private CartAdapter cartAdapter; // Declare CartAdapter
-    private List<CartItemModel> selectedItems; // Declare the list of selected items
-    private TextView itemTotalTextView; // TextView for item total
-    private TextView totalCostTextView; // TextView for total cost
-    private FirebaseFirestore db; // Firestore instance
-    private ListenerRegistration registration; // Listener registration
+    private RecyclerView recyclerView;
+    private CartAdapter cartAdapter;
+    private List<CartItemModel> selectedItems;
+    private TextView itemTotalTextView;
+    private TextView totalCostTextView;
+    private FirebaseFirestore db;
+    private ListenerRegistration registration;
+    private FirebaseAuth mAuth;
+    private FirebaseUser cUser;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_checkout, container, false);
 
-        // Initialize Firestore
+        // Initialize Firestore and Auth
         db = FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+        cUser = mAuth.getCurrentUser();
 
         // Initialize UI elements
-        recyclerView = view.findViewById(R.id.recyclerViewCart); // Use recyclerViewCart
-        itemTotalTextView = view.findViewById(R.id.itemTotal); // TextView for item total
-        totalCostTextView = view.findViewById(R.id.totalCost); // TextView for total cost
+        recyclerView = view.findViewById(R.id.recyclerViewCart);
+        itemTotalTextView = view.findViewById(R.id.itemTotal);
+        totalCostTextView = view.findViewById(R.id.totalCost);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        // Retrieve selected items from arguments
-        selectedItems = getArguments().getParcelableArrayList("selectedItems");
+        // Retrieve selected items from arguments if provided
+        selectedItems = getArguments() != null ? getArguments().<CartItemModel>getParcelableArrayList("selectedItems") : new ArrayList<>();
 
-        // Set up adapter
+        // Set up adapter with selected items list
         cartAdapter = new CartAdapter(selectedItems);
         recyclerView.setAdapter(cartAdapter);
 
@@ -57,15 +64,20 @@ public class CheckoutFragment extends Fragment {
     }
 
     private void fetchDataFromFirestore() {
-        String userId = "Users"; // Replace with actual user ID if dynamic
+        if (cUser == null) {
+            Log.e("CheckoutFragment", "User not logged in.");
+            return;
+        }
 
-        db.collection("users").document(userId).collection("cartItems")
+        String userId = cUser.getUid();
+
+        db.collection("Users").document(userId).collection("cartItems")
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         List<CartItemModel> items = new ArrayList<>();
                         double itemTotal = 0;
-                        double discount = 0; // Set your discount value here
+                        double discount = 0; // Set discount value if applicable
 
                         for (QueryDocumentSnapshot document : task.getResult()) {
                             CartItemModel item = document.toObject(CartItemModel.class);
@@ -76,30 +88,36 @@ public class CheckoutFragment extends Fragment {
                             }
                         }
 
-                        // Log the number of items added
-                        Log.d("CheckoutFragment", "Number of selected items: " + items.size());
-
-                        // Calculate totalCost as itemTotal minus discount
                         double totalCost = itemTotal - discount;
 
-                        // Update selected items and totals
+                        // Update selected items and totals in the adapter
                         selectedItems.clear();
                         selectedItems.addAll(items);
                         cartAdapter.notifyDataSetChanged();
+
+                        // Update TextViews and set visibility
                         updateTotals(itemTotal, totalCost);
+                        toggleTextViewVisibility(!items.isEmpty());
                     } else {
                         Log.e("CheckoutFragment", "Error fetching data: ", task.getException());
                     }
                 });
     }
 
-
-
     private void updateTotals(double itemTotal, double totalCost) {
         itemTotalTextView.setText("P" + String.format("%.2f", itemTotal)); // Display item total
         totalCostTextView.setText("P" + String.format("%.2f", totalCost)); // Display total cost
     }
 
+    private void toggleTextViewVisibility(boolean hasItems) {
+        if (hasItems) {
+            itemTotalTextView.setVisibility(View.VISIBLE);
+            totalCostTextView.setVisibility(View.VISIBLE);
+        } else {
+            itemTotalTextView.setVisibility(View.GONE);
+            totalCostTextView.setVisibility(View.GONE);
+        }
+    }
 
     @Override
     public void onDestroy() {

@@ -52,6 +52,7 @@ public class CartFragment extends Fragment {
 
         // Initialize the Select All checkbox
         selectAllCheckBox = view.findViewById(R.id.selectAllcheckbox);
+
         selectAllCheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
             cartAdapter.selectAll(isChecked); // Select or deselect all items
         });
