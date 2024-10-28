@@ -21,9 +21,16 @@ import java.util.List;
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder> {
     private List<CartItemModel> cartItems;
     private HashMap<Integer, Boolean> selectedItems = new HashMap<>();
+    private OnItemSelectedListener onItemSelectedListener;
 
-    public CartAdapter(List<CartItemModel> cartItems) {
+    // Interface for item selection change
+    public interface OnItemSelectedListener {
+        void onItemSelected();
+    }
+
+    public CartAdapter(List<CartItemModel> cartItems, OnItemSelectedListener listener) {
         this.cartItems = cartItems;
+        this.onItemSelectedListener = listener;
         for (int i = 0; i < cartItems.size(); i++) {
             selectedItems.put(i, false); // Initialize all items as unchecked
         }
@@ -47,6 +54,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         // Checkbox listener
         holder.checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
             selectedItems.put(position, isChecked); // Update selection state
+            onItemSelectedListener.onItemSelected(); // Notify the listener
         });
     }
 
@@ -93,8 +101,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             productName.setText(item.getProductName());
             quantity.setText(String.valueOf(item.getQuantity()));
             totalPrice.setText(item.getTotalPrice()); // Updated method call
-            ratePercent.setText(item.getRate() != null ? item.getRate() : "");
-            numReviews.setText(item.getNumReviews() != null ? item.getNumReviews() : "");
+            ratePercent.setText(item.getRate() != null ? item.getRate() : "test");
+            numReviews.setText(item.getNumReviews() != null ? item.getNumReviews() : "test");
 
             Glide.with(itemView.getContext())
                     .load(item.getImageUrl())

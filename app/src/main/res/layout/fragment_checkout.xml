@@ -98,10 +98,10 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerViewCart"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="220dp"
-                    android:nestedScrollingEnabled="false"
-                    tools:listitem="@layout/cart_items" />
+                    android:nestedScrollingEnabled="true"
+                    tools:listitem="@layout/cartcheckout_items" />
 
                     <Button
                         android:layout_width="match_parent"
@@ -220,7 +220,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat_bold"
                         android:textColor="@color/semiblack"
-                        android:text="P 750.00" />
+                        android:text="P 0.00" />
                 </LinearLayout>
 
                 <Button
@@ -252,6 +252,7 @@
                 </LinearLayout>
 
                 <Button
+                    android:id="@+id/btncheckout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"

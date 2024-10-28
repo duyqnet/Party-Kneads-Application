@@ -70,13 +70,13 @@ public class TermsFragment extends Fragment {
             }
         });
 
-        btnTerms.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavController navController = Navigation.findNavController(view);
-                navController.navigate(R.id.action_termsFragment2_to_tandCFragment);  // Ensure you have this action
-            }
-        });
+//        btnTerms.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                NavController navController = Navigation.findNavController(view);
+//                navController.navigate(R.id.action_termsFragment2_to_tandCFragment);  // Ensure you have this action
+//            }
+//        });
 
         TextView textView = view.findViewById(R.id.tvAgree);
         String text = getString(R.string.readTerm);

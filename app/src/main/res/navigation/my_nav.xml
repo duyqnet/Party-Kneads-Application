@@ -55,9 +55,7 @@
         <action
             android:id="@+id/action_termsFragment2_to_loginFragment"
             app:destination="@id/loginFragment" />
-        <action
-            android:id="@+id/action_termsFragment2_to_tandCFragment"
-            app:destination="@id/tandCFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/personaldetailsFragment"
@@ -133,14 +131,7 @@
             android:id="@+id/action_seller_HomePageFragment_to_add_Items"
             app:destination="@id/add_Items" />
     </fragment>
-    <fragment
-        android:id="@+id/tandCFragment"
-        android:name="com.ignacio.partykneadsapp.TandCFragment"
-        android:label="TandCFragment" >
-        <action
-            android:id="@+id/action_tandCFragment_to_termsFragment2"
-            app:destination="@id/termsFragment2" />
-    </fragment>
+
     <fragment
         android:id="@+id/myProductFragment"
         android:name="com.ignacio.partykneadsapp.MyProductFragment"
@@ -177,6 +168,9 @@
         <action
             android:id="@+id/action_cartFragment_to_homePageFragment"
             app:destination="@id/homePageFragment" />
+        <action
+            android:id="@+id/action_cartFragment_to_checkoutFragment"
+            app:destination="@id/checkoutFragment" />
     </fragment>
     <fragment
         android:id="@+id/cake_Description"
@@ -188,6 +182,15 @@
             app:destination="@id/homePageFragment" />
         <action
             android:id="@+id/action_cake_Description_to_cartFragment"
+            app:destination="@id/cartFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/checkoutFragment"
+        android:name="com.ignacio.partykneadsapp.CheckoutFragment"
+        android:label="fragment_checkout"
+        tools:layout="@layout/fragment_checkout" >
+        <action
+            android:id="@+id/action_checkoutFragment_to_cartFragment"
             app:destination="@id/cartFragment" />
     </fragment>
 </navigation>

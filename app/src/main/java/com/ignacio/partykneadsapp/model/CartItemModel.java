@@ -2,9 +2,11 @@ package com.ignacio.partykneadsapp.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
 public class CartItemModel implements Parcelable {
     private String productName;
+    private String productId;
     private String cakeSize; // Add this field
     private int quantity; // Assuming this is an integer
     private String totalPrice; // Assuming price is stored as a string
@@ -19,6 +21,7 @@ public class CartItemModel implements Parcelable {
 
     // Parcelable constructor
     protected CartItemModel(Parcel in) {
+        productId = in.readString();
         productName = in.readString();
         cakeSize = in.readString(); // Read the new field
         quantity = in.readInt();
@@ -48,6 +51,7 @@ public class CartItemModel implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(productId);
         dest.writeString(productName);
         dest.writeString(cakeSize); // Write the new field
         dest.writeInt(quantity);
@@ -58,6 +62,8 @@ public class CartItemModel implements Parcelable {
     }
 
     // Getters
+    public String getProductId() { return productId; }
+
     public String getProductName() {
         return productName;
     }
@@ -96,8 +102,12 @@ public class CartItemModel implements Parcelable {
 
     public double getTotalPriceAsDouble() {
         try {
-            return Double.parseDouble(totalPrice); // Convert String to double
+            // Remove any non-numeric characters (like "P" or spaces) before parsing
+            String numericValue = totalPrice.replaceAll("[^\\d.]", ""); // Keeps only digits and the decimal point
+            return Double.parseDouble(numericValue);
         } catch (NumberFormatException e) {
+            // Log the error for debugging purposes
+            Log.e("CartItemModel", "Error parsing totalPrice: " + totalPrice, e);
             return 0; // Return 0 if the conversion fails
         }
     }

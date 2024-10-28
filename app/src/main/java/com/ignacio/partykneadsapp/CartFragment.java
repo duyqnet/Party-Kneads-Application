@@ -2,6 +2,7 @@ package com.ignacio.partykneadsapp;
 
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +27,7 @@ import com.ignacio.partykneadsapp.model.CartItemModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CartFragment extends Fragment {
+public class CartFragment extends Fragment implements CartAdapter.OnItemSelectedListener {
     private RecyclerView recyclerView;
     private CartAdapter cartAdapter;
     private List<CartItemModel> cartItemList;
@@ -48,7 +49,9 @@ public class CartFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         cartItemList = new ArrayList<>();
-        cartAdapter = new CartAdapter(cartItemList);
+
+        // Initialize the adapter with listener
+        cartAdapter = new CartAdapter(cartItemList, this);
         recyclerView.setAdapter(cartAdapter);
 
         // Initialize the total price TextView
@@ -59,6 +62,7 @@ public class CartFragment extends Fragment {
 
         selectAllCheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
             cartAdapter.selectAll(isChecked); // Select or deselect all items
+            updateTotalPrice(); // Update total price based on selection
         });
 
         btnBack.setOnClickListener(v -> {
@@ -82,16 +86,13 @@ public class CartFragment extends Fragment {
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        double totalPrice = 0; // Initialize total price
-
                         for (DocumentSnapshot document : task.getResult()) {
                             CartItemModel item = document.toObject(CartItemModel.class);
                             cartItemList.add(item);
-                            totalPrice += item.getTotalPriceAsDouble(); // Accumulate total price
                         }
 
                         cartAdapter.notifyDataSetChanged();
-                        updateTotalPrice(totalPrice); // Update the total price TextView
+                        updateTotalPrice(); // Update total price based on initial selection state
                     } else {
                         // Handle the error
                         Toast.makeText(getContext(), "Error loading cart items", Toast.LENGTH_SHORT).show();
@@ -99,7 +100,19 @@ public class CartFragment extends Fragment {
                 });
     }
 
-    private void updateTotalPrice(double totalPrice) {
+    @Override
+    public void onItemSelected() {
+        updateTotalPrice(); // Update total price whenever an item's checkbox is checked/unchecked
+    }
+
+    private void updateTotalPrice() {
+        double totalPrice = 0; // Initialize total price
+        List<CartItemModel> selectedItems = cartAdapter.getSelectedItems(); // Get selected items
+
+        for (CartItemModel item : selectedItems) {
+            totalPrice += item.getTotalPriceAsDouble(); // Accumulate total price of selected items
+        }
+
         totalPriceTextView.setText("Total: P" + String.format("%.2f", totalPrice)); // Display formatted total price
     }
 
@@ -109,19 +122,16 @@ public class CartFragment extends Fragment {
         if (selectedItems.isEmpty()) {
             Toast.makeText(getContext(), "Please select at least one item to proceed.", Toast.LENGTH_SHORT).show();
         } else {
-            // Create a Bundle to pass the selected items
+            // Log selected items to check
+            for (CartItemModel item : selectedItems) {
+                Log.d("SelectedItem", "Item: " + item.getProductName() + ", Quantity: " + item.getQuantity());
+            }
+
+            // Create a Bundle to pass the selected items to the CheckoutFragment
             Bundle bundle = new Bundle();
-            bundle.putParcelableArrayList("selectedItems", new ArrayList<Parcelable>(selectedItems));
-
-            // Navigate to CheckoutFragment with selected items
-            CheckoutFragment checkoutFragment = new CheckoutFragment();
-            checkoutFragment.setArguments(bundle);
-
-            requireActivity().getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.fragment_container, checkoutFragment) // Adjust the container ID
-                    .addToBackStack(null)
-                    .commit();
+            bundle.putParcelableArrayList("selectedItems", (ArrayList<? extends Parcelable>) selectedItems);
+            NavController navController = Navigation.findNavController(requireView());
+            navController.navigate(R.id.action_cartFragment_to_checkoutFragment, bundle);
         }
     }
 }
