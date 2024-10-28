@@ -7,10 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -31,11 +34,12 @@ public class CartFragment extends Fragment {
     private FirebaseAuth auth;
     private TextView totalPriceTextView; // TextView to display total price
     private CheckBox selectAllCheckBox; // Checkbox to select all items
+    ImageView btnBack;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_cart, container, false);
-
+        btnBack = view.findViewById(R.id.btnBack);
         // Initialize Firestore and Auth
         firestore = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
@@ -55,6 +59,11 @@ public class CartFragment extends Fragment {
 
         selectAllCheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
             cartAdapter.selectAll(isChecked); // Select or deselect all items
+        });
+
+        btnBack.setOnClickListener(v -> {
+            NavController navController = Navigation.findNavController(requireView());
+            navController.navigate(R.id.action_cartFragment_to_homePageFragment);
         });
 
         // Initialize the Checkout button

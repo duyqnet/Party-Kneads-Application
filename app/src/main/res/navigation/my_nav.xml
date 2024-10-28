@@ -97,6 +97,9 @@
         <action
             android:id="@+id/action_homePageFragment_to_cartFragment"
             app:destination="@id/cartFragment" />
+        <action
+            android:id="@+id/action_homePageFragment_to_cake_Description"
+            app:destination="@id/cake_Description" />
 
     </fragment>
 
@@ -172,16 +175,19 @@
         android:label="fragment_cart"
         tools:layout="@layout/fragment_cart" >
         <action
-            android:id="@+id/action_cartFragment_to_checkoutFragment"
-            app:destination="@id/checkoutFragment" />
+            android:id="@+id/action_cartFragment_to_homePageFragment"
+            app:destination="@id/homePageFragment" />
     </fragment>
     <fragment
-        android:id="@+id/checkoutFragment"
-        android:name="com.ignacio.partykneadsapp.CheckoutFragment"
-        android:label="fragment_checkout"
-        tools:layout="@layout/fragment_checkout" >
+        android:id="@+id/cake_Description"
+        android:name="com.ignacio.partykneadsapp.Cake_Description"
+        android:label="fragment_cake__description"
+        tools:layout="@layout/fragment_cake__description" >
         <action
-            android:id="@+id/action_checkoutFragment_to_cartFragment"
+            android:id="@+id/action_cake_Description_to_homePageFragment"
+            app:destination="@id/homePageFragment" />
+        <action
+            android:id="@+id/action_cake_Description_to_cartFragment"
             app:destination="@id/cartFragment" />
     </fragment>
 </navigation>

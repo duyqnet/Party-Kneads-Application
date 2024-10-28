@@ -13,6 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -62,15 +64,9 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("detailed", productList.get(position)); // Assuming ProductShopModel implements Serializable
 
-                // Set the arguments for the fragment
-                fragment.setArguments(bundle);
-
                 // Get the FragmentManager and start the transaction
-                FragmentManager fragmentManager = ((FragmentActivity) context).getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, fragment);
-                fragmentTransaction.addToBackStack(null); // Optional: allows user to navigate back
-                fragmentTransaction.commit();
+                NavController navController = Navigation.findNavController(view);
+                navController.navigate(R.id.action_homePageFragment_to_cake_Description, bundle);
             }
         });
 
