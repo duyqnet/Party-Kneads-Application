@@ -1,34 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView android:id="@+id/cakeCardView"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="20dp"
+    app:cardCornerRadius="60dp"
+    app:cardBackgroundColor="@color/babypink"
     android:layout_marginRight="20dp"
-    android:background="@color/babypink">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/footerpink"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
+        <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
         android:padding="5dp">
-
 
         <TextView
             android:id="@+id/cakeSizes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="8dp"
             android:fontFamily="@font/montserrat_semibold"
+            android:padding="8dp"
             android:text="6'' Cake: Serves 6-8"
-            android:textSize="14sp"
             android:textAlignment="center"
-            android:textColor="@color/semiblack" />
+            android:textColor="@color/semiblack"
+            android:textSize="14sp" />
 
+        </LinearLayout>
 
-    </LinearLayout>
-
-</androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
