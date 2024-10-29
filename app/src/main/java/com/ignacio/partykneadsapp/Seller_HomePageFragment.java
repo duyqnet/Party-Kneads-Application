@@ -67,8 +67,6 @@ public class Seller_HomePageFragment extends Fragment {
             navController.navigate(R.id.action_seller_HomePageFragment_to_profileFragment);
         });
 
-
-
     }
 
 

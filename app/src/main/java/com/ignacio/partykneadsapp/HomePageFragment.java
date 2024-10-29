@@ -24,6 +24,20 @@ public class HomePageFragment extends Fragment {
     private FragmentHomePageBinding binding;
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        boolean loadShopFragment = getArguments() != null && getArguments().getBoolean("loadShop", false);
+        Fragment fragmentToLoad = loadShopFragment ? new ShopFragment() : new HomeFragment();
+
+        if (savedInstanceState == null) {
+            getParentFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_cont, fragmentToLoad)
+                    .commit();
+        }
+    }
+
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         binding = FragmentHomePageBinding.inflate(inflater, container, false);
