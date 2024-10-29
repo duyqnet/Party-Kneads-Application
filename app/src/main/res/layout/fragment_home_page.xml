@@ -42,7 +42,7 @@
                 android:id="@+id/homeMenu"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:src="@drawable/home" />
+                android:src="@drawable/home_filled" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -67,7 +67,7 @@
                 android:id="@+id/heartMenu"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:src="@drawable/favorite" />
+                android:src="@drawable/favorite_outline" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -109,7 +109,7 @@
                 android:id="@+id/notifMenu"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:src="@drawable/notif" />
+                android:src="@drawable/notif_outline" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -134,7 +134,7 @@
                 android:id="@+id/profileMenu"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:src="@drawable/person" />
+                android:src="@drawable/person_outline" />
 
             <TextView
                 android:layout_width="wrap_content"
