@@ -113,7 +113,7 @@ public class CartFragment extends Fragment implements CartAdapter.OnItemSelected
             totalPrice += item.getTotalPriceAsDouble(); // Accumulate total price of selected items
         }
 
-        totalPriceTextView.setText("Total: P" + String.format("%.2f", totalPrice)); // Display formatted total price
+        totalPriceTextView.setText("Total: ₱" + String.format("%.2f", totalPrice)); // Display formatted total price
     }
 
     private void proceedToCheckout() {

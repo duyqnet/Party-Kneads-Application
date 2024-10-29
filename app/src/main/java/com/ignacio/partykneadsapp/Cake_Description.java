@@ -103,11 +103,11 @@ public class Cake_Description extends Fragment {
 
         // Prepare cake sizes data
         List<CakeSizeModel> cakeSizes = new ArrayList<>();
-        cakeSizes.add(new CakeSizeModel("Bento Cake", "Serves 1-2", "P280"));
-        cakeSizes.add(new CakeSizeModel("6'' Cake", "Serves 6-8", "P420"));
-        cakeSizes.add(new CakeSizeModel("8'' Cake", "Serves 10-12", "P600"));
-        cakeSizes.add(new CakeSizeModel("9'' Cake", "Serves 12-16", "P850"));
-        cakeSizes.add(new CakeSizeModel("10'' Cake", "Serves 16-20", "P1000"));
+        cakeSizes.add(new CakeSizeModel("Bento Cake", "Serves 1-2", "₱280"));
+        cakeSizes.add(new CakeSizeModel("6'' Cake", "Serves 6-8", "₱420"));
+        cakeSizes.add(new CakeSizeModel("8'' Cake", "Serves 10-12", "₱600"));
+        cakeSizes.add(new CakeSizeModel("9'' Cake", "Serves 12-16", "₱850"));
+        cakeSizes.add(new CakeSizeModel("10'' Cake", "Serves 16-20", "₱1000"));
 
         // Set the adapter with the listener
         CakeSizeAdapter adapter = new CakeSizeAdapter(cakeSizes, cakeSize -> {
@@ -201,9 +201,9 @@ public class Cake_Description extends Fragment {
     private void updateQuantityAndPrice() {
         quantityTextView.setText(String.valueOf(quantity));
         if (selectedCakeSize != null) {
-            int price = Integer.parseInt(selectedCakeSize.getPrice().replace("P", ""));
+            int price = Integer.parseInt(selectedCakeSize.getPrice().replace("₱", ""));
             int totalPrice = price * quantity;
-            productPrice.setText("P" + totalPrice); // Update displayed price
+            productPrice.setText("₱" + totalPrice); // Update displayed price
         }
         // Enable or disable the minus button based on quantity
         minusButton.setEnabled(quantity > 1);

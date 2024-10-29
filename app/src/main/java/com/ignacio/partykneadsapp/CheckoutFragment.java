@@ -99,8 +99,8 @@ public class CheckoutFragment extends Fragment {
         double totalCost = itemTotal - discount;
 
         // Update TextViews
-        itemTotalTextView.setText("P" + String.format("%.2f", itemTotal));
-        totalCostTextView.setText("P" + String.format("%.2f", totalCost));
+        itemTotalTextView.setText("₱" + String.format("%.2f", itemTotal));
+        totalCostTextView.setText("₱" + String.format("%.2f", totalCost));
 
         // Toggle TextView visibility
         toggleTextViewVisibility(!selectedItems.isEmpty());

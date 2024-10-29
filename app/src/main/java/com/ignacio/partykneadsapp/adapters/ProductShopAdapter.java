@@ -47,7 +47,7 @@ public class ProductShopAdapter extends RecyclerView.Adapter<ProductShopAdapter.
 
         // Bind data to the views
         holder.productName.setText(currentProduct.getName());
-        holder.itemPrice.setText("P " + currentProduct.getPrice());
+        holder.itemPrice.setText("₱ " + currentProduct.getPrice());
 
         // Load product image using Glide
         Glide.with(holder.itemView.getContext())
