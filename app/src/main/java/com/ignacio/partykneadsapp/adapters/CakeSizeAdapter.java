@@ -55,7 +55,7 @@ public class CakeSizeAdapter extends RecyclerView.Adapter<CakeSizeAdapter.CakeSi
             holder.cakeSizesTextView.setTextColor(ContextCompat.getColor(context, R.color.semiwhite));
         } else {
             // Set background color for unselected items
-            cardView.setCardBackgroundColor(ContextCompat.getColor(context, R.color.babypink));
+            cardView.setCardBackgroundColor(ContextCompat.getColor(context, R.color.footerpink));
             holder.cakeSizesTextView.setTextColor(ContextCompat.getColor(context, R.color.semiblack));
         }
 

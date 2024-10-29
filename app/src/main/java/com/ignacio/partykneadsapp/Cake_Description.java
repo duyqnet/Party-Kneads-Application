@@ -104,11 +104,11 @@ public class Cake_Description extends Fragment {
 
         // Prepare cake sizes data
         List<CakeSizeModel> cakeSizes = new ArrayList<>();
-        cakeSizes.add(new CakeSizeModel("Bento Cake", "Serves 1-2", "₱280"));
-        cakeSizes.add(new CakeSizeModel("6'' Cake", "Serves 6-8", "₱420"));
-        cakeSizes.add(new CakeSizeModel("8'' Cake", "Serves 10-12", "₱600"));
-        cakeSizes.add(new CakeSizeModel("9'' Cake", "Serves 12-16", "₱850"));
-        cakeSizes.add(new CakeSizeModel("10'' Cake", "Serves 16-20", "₱1000"));
+        cakeSizes.add(new CakeSizeModel("Bento Cake", "Serves 1 - 2", "₱280"));
+        cakeSizes.add(new CakeSizeModel("6'' Cake", "Serves 6 - 8", "₱420"));
+        cakeSizes.add(new CakeSizeModel("8'' Cake", "Serves 10 - 12", "₱600"));
+        cakeSizes.add(new CakeSizeModel("9'' Cake", "Serves 12 - 16", "₱850"));
+        cakeSizes.add(new CakeSizeModel("10'' Cake", "Serves 16 - 20", "₱1000"));
 
         // Set the adapter with the listener
         CakeSizeAdapter adapter = new CakeSizeAdapter(cakeSizes, cakeSize -> {

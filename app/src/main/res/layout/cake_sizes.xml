@@ -2,7 +2,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:cardCornerRadius="60dp"
-    app:cardBackgroundColor="@color/babypink"
+    app:cardBackgroundColor="@color/footerpink"
     android:layout_marginRight="20dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
