@@ -1,7 +1,10 @@
 package com.ignacio.partykneadsapp;
 
+import android.animation.LayoutTransition;
+import android.app.AlertDialog;
 import android.os.Bundle;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -17,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -40,6 +44,7 @@ public class CheckoutFragment extends Fragment {
     private FirebaseUser cUser;
     CheckoutAdapter coutAdapter;
     ImageView btnBack;
+    Button btncheckout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -79,13 +84,36 @@ public class CheckoutFragment extends Fragment {
         });
 
         // Initialize the Checkout button
-        Button btnCheckout = view.findViewById(R.id.btncheckout); // Make sure this button is in your XML layout
-        btnCheckout.setOnClickListener(v -> saveOrderToDatabase());
+        Button btnCheckout = view.findViewById(R.id.btncheckout);
+        btnCheckout.setOnClickListener(v -> {
+            saveOrderToDatabase();
+            showSuccessDialog();
+        });
 
         // Update totals based on selectedItems
         updateTotals();
 
         return view;
+    }
+
+    private void showSuccessDialog() {
+        View dialogView = LayoutInflater.from(getContext()).inflate(R.layout.success_dialog, null);
+        TextView btnContinue = dialogView.findViewById(R.id.btnContinue);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setView(dialogView);
+        AlertDialog alertDialog = builder.create();
+
+        btnContinue.setOnClickListener(v -> {
+            alertDialog.dismiss();
+            Toast.makeText(getContext(), "Done", Toast.LENGTH_SHORT).show();
+
+            // Navigate to HomeFragment
+            NavController navController = Navigation.findNavController(requireView());
+            navController.navigate(R.id.action_checkoutFragment_to_homePageFragment); // Adjust to your actual action ID
+        });
+
+        alertDialog.show();
     }
 
     private void updateTotals() {
