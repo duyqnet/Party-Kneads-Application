@@ -1,6 +1,7 @@
 package com.ignacio.partykneadsapp;
 
 import android.app.Dialog;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -140,6 +141,12 @@ public class Cake_Description extends Fragment {
         dialog.setContentView(R.layout.addtocartdialog); // Inflate your dialog layout
         dialog.setCancelable(true);
 
+        // Make the dialog background transparent
+        if (dialog.getWindow() != null) {
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        }
+
+
         // Reference to FirebaseAuth
         FirebaseAuth auth = FirebaseAuth.getInstance();
         String userId = auth.getCurrentUser() != null ? auth.getCurrentUser().getUid() : null;
@@ -147,7 +154,6 @@ public class Cake_Description extends Fragment {
         // Automatically add item to the cart when the dialog is shown
         if (userId != null) {
             saveCartItem(userId);
-            Toast.makeText(getActivity(), "Item added to cart!", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(getActivity(), "Please log in to add items to the cart.", Toast.LENGTH_SHORT).show();
         }
@@ -189,7 +195,6 @@ public class Cake_Description extends Fragment {
         db.collection("Users").document(userId).collection("cartItems").add(cartItem)
                 .addOnSuccessListener(documentReference -> {
                     // Successfully added to cart
-                    Toast.makeText(getActivity(), "Item added to cart!", Toast.LENGTH_SHORT).show();
                 })
                 .addOnFailureListener(e -> {
                     // Handle failure

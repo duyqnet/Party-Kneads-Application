@@ -2,6 +2,7 @@ package com.ignacio.partykneadsapp;
 
 import android.animation.LayoutTransition;
 import android.app.AlertDialog;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -104,6 +105,11 @@ public class CheckoutFragment extends Fragment {
         builder.setView(dialogView);
         AlertDialog alertDialog = builder.create();
 
+        // Set the dialog background to transparent
+        if (alertDialog.getWindow() != null) {
+            alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        }
+
         btnContinue.setOnClickListener(v -> {
             alertDialog.dismiss();
             Toast.makeText(getContext(), "Done", Toast.LENGTH_SHORT).show();
@@ -115,6 +121,7 @@ public class CheckoutFragment extends Fragment {
 
         alertDialog.show();
     }
+
 
     private void updateTotals() {
         double itemTotal = 0;
