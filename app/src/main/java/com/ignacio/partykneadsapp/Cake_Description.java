@@ -178,8 +178,10 @@ public class Cake_Description extends Fragment {
 
 
     private void saveCartItem(String userId) {
-        // Create a new AddToCartModel with imageUrl
+        // Create a new AddToCartModel with imageUrl and timestamp
         String imageUrl = productShopModel.getimageUrl(); // Ensure this accesses the image URL correctly
+
+        long timestamp = System.currentTimeMillis(); // Get the current timestamp
 
         AddToCartModel cartItem = new AddToCartModel(
                 productShopModel.getId(),
@@ -187,7 +189,8 @@ public class Cake_Description extends Fragment {
                 selectedCakeSize.getSize(),
                 quantity,
                 productPrice.getText().toString(),
-                imageUrl
+                imageUrl,
+                timestamp // Pass the timestamp here
         );
 
         // Save to Firestore under the user's document
@@ -195,6 +198,7 @@ public class Cake_Description extends Fragment {
         db.collection("Users").document(userId).collection("cartItems").add(cartItem)
                 .addOnSuccessListener(documentReference -> {
                     // Successfully added to cart
+                    Toast.makeText(getActivity(), "Item added to cart.", Toast.LENGTH_SHORT).show();
                 })
                 .addOnFailureListener(e -> {
                     // Handle failure

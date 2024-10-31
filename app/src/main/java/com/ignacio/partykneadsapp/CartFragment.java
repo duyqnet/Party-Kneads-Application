@@ -80,12 +80,15 @@ public class CartFragment extends Fragment implements CartAdapter.OnItemSelected
     }
 
     private void loadCartItems() {
-        String userId = auth.getCurrentUser().getUid();
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        firestore.collection("Users").document(userId).collection("cartItems")
+        firestore.collection("Users").document(userId)
+                .collection("cartItems")
+                .orderBy("timestamp", com.google.firebase.firestore.Query.Direction.DESCENDING) // Order by timestamp descending
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
+                        cartItemList.clear(); // Clear the existing list to avoid duplicates
                         for (DocumentSnapshot document : task.getResult()) {
                             CartItemModel item = document.toObject(CartItemModel.class);
                             cartItemList.add(item);
@@ -99,6 +102,7 @@ public class CartFragment extends Fragment implements CartAdapter.OnItemSelected
                     }
                 });
     }
+
 
     @Override
     public void onItemSelected() {

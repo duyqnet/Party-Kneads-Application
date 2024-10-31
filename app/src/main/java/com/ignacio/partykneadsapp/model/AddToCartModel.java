@@ -9,14 +9,16 @@ public class AddToCartModel implements Serializable {
     private int quantity;
     private String totalPrice;
     private String imageUrl;
+    private long timestamp;
 
-    public AddToCartModel(String productId, String productName, String cakeSize, int quantity, String totalPrice, String imageUrl) {
+    public AddToCartModel(String productId, String productName, String cakeSize, int quantity, String totalPrice, String imageUrl, long timestamp) {
         this.productId = productId;
         this.productName = productName;
         this.cakeSize = cakeSize;
         this.quantity = quantity;
         this.totalPrice = totalPrice;
         this.imageUrl = imageUrl; // Corrected assignment
+        this.timestamp = timestamp;
     }
 
     public String getImageUrl() {
@@ -62,5 +64,13 @@ public class AddToCartModel implements Serializable {
 
     public void setTotalPrice(String totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public long getTimestamp() {
+        return timestamp; // Getter for timestamp
+    }
+
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp; // Setter for timestamp
     }
 }

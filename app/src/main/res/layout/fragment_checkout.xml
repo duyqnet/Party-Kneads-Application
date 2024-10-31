@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/pinkbg"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/whitecont"
+    android:orientation="vertical"
+    android:paddingBottom="100dp"
+    android:clipToPadding="false"
     tools:context=".CheckoutFragment">
 
     <FrameLayout
@@ -31,9 +38,12 @@
 
     </FrameLayout>
 
+
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -45,229 +55,229 @@
             android:layout_height="760dp"
             android:layout_gravity="bottom"
             android:backgroundTint="@color/white"
-            android:src="@drawable/whitecont"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            android:src="@drawable/whitecont"/>
 
-        <androidx.core.widget.NestedScrollView
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fillViewport="true">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:paddingHorizontal="20dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:layout_marginVertical="20dp"
-                    android:orientation="horizontal"
-                    app:layout_constraintTop_toTopOf="@+id/whitecont"
-                    tools:layout_editor_absoluteX="0dp">
-
-                    <Button
-                        android:layout_width="0dp"
-                        android:layout_height="2dp"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="25dp"
-                        android:layout_weight="1"
-                        android:backgroundTint="@color/darkpink" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="15dp"
-                        android:layout_weight="0"
-                        android:fontFamily="@font/montserrat_extrabold"
-                        android:text="CHECKOUT"
-                        android:textAlignment="center"
-                        android:textColor="@color/darkpink"
-                        android:textSize="28sp" />
-
-                    <Button
-                        android:layout_width="0dp"
-                        android:layout_height="2dp"
-                        android:layout_gravity="center"
-                        android:layout_marginRight="25dp"
-                        android:layout_weight="1"
-                        android:backgroundTint="@color/darkpink" />
-                </LinearLayout>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerViewCart"
-                    android:layout_width="match_parent"
-                    android:layout_height="220dp"
-                    android:nestedScrollingEnabled="true"
-                    tools:listitem="@layout/cartcheckout_items" />
-
-                    <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:backgroundTint="@color/semiwhite"
-                        android:layout_marginVertical="20dp"
-                        app:cornerRadius="10dp"
-                        app:strokeColor="@color/pink"
-                        android:text="Add Voucher"
-                        android:textAlignment="textStart"
-                        android:fontFamily="@font/montserrat_medium"
-                        android:drawableLeft="@drawable/discount"
-                        android:drawableRight="@drawable/nextt"
-                        android:textColor="@color/semiblack"
-                        app:strokeWidth="2dp" />
-
-                       <androidx.recyclerview.widget.RecyclerView
-                           android:layout_width="match_parent"
-                           android:layout_height="wrap_content"
-                           tools:listitem="@layout/adress_list"
-                           android:layout_gravity="center"
-                           tools:itemCount="1">
-                       </androidx.recyclerview.widget.RecyclerView>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginBottom="15dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/grey"
-                        android:text="Payment Method:"
-                        android:fontFamily="@font/montserrat_medium"
-                        android:textSize="16sp"
-                        android:layout_weight="1"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/semiblack"
-                        android:fontFamily="@font/montserrat_bold"
-                        android:text="Cash On Delivery" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal" >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/grey"
-                        android:text="Item Total"
-                        android:fontFamily="@font/montserrat_medium"
-                        android:textSize="16sp"
-                        android:layout_weight="1"/>
-                    <TextView
-                        android:id="@+id/itemTotal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/semiblack"
-                        android:fontFamily="@font/montserrat_bold"
-                        android:text="P 750.00" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal" >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/grey"
-                        android:text="Discount"
-                        android:fontFamily="@font/montserrat_medium"
-                        android:textSize="16sp"
-                        android:layout_weight="1"/>
-                    <TextView
-                        android:id="@+id/discount"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat_bold"
-                        android:textColor="@color/semiblack"
-                        android:text="P 0.00" />
-                </LinearLayout>
+                android:layout_gravity="start"
+                android:layout_marginVertical="20dp"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toTopOf="@+id/whitecont"
+                tools:layout_editor_absoluteX="0dp">
 
                 <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="3dp"
-                    android:layout_marginVertical="10dp"
-                    android:backgroundTint="@color/pink" />
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="25dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/darkpink" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal" >
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_weight="0"
+                    android:fontFamily="@font/montserrat_extrabold"
+                    android:text="CHECKOUT"
+                    android:textAlignment="center"
+                    android:textColor="@color/darkpink"
+                    android:textSize="28sp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Total Cost:"
-                        android:textColor="@color/grey"
-                        android:fontFamily="@font/montserrat_medium"
-                        android:textSize="16sp"
-                        android:layout_weight="1"/>
-                    <TextView
-                        android:id="@+id/totalCost"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat_bold"
-                        android:textColor="@color/semiblack"
-                        android:text="P 750.00" />
-                </LinearLayout>
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_marginTop="15dp">
-
-
-                    <Button
-                        android:id="@+id/btncheckout"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:backgroundTint="@color/pink"
-                        app:cornerRadius="10dp"
-                        android:textAlignment="center"
-                        android:textColor="@color/semiwhite"
-                        android:fontFamily="@font/montserrat_bold"
-                        android:textSize="16sp" />
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:orientation="horizontal">
-                        <ImageView
-                            android:id="@+id/addIcon"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/buynowcart"
-                            android:layout_gravity="center"
-                            android:contentDescription="Add Icon"
-                            android:layout_marginEnd="8dp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/montserrat_bold"
-                            android:text="Checkout"
-                            android:layout_gravity="center"
-                            android:textColor="@color/semiwhite"
-                            android:textSize="16sp" />
-                    </LinearLayout>
-
-                </FrameLayout>
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="25dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/darkpink" />
             </LinearLayout>
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewCart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                tools:itemCount="1"
+                tools:listitem="@layout/cartcheckout_items" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginVertical="20dp"
+                android:backgroundTint="@color/semiwhite"
+                android:drawableLeft="@drawable/discount"
+                android:drawableRight="@drawable/nextt"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="Add Voucher"
+                android:textAlignment="textStart"
+                android:textColor="@color/semiblack"
+                app:cornerRadius="10dp"
+                app:strokeColor="@color/pink"
+                app:strokeWidth="2dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/locationRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                tools:itemCount="1"
+                tools:listitem="@layout/adress_list" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="15dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:text="Payment Method:"
+                    android:textColor="@color/grey"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="Cash On Delivery"
+                    android:textColor="@color/semiblack" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:text="Item Total"
+                    android:textColor="@color/grey"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/itemTotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="P 750.00"
+                    android:textColor="@color/semiblack" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:text="Discount"
+                    android:textColor="@color/grey"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/discount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="P 0.00"
+                    android:textColor="@color/semiblack" />
+            </LinearLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_marginVertical="10dp"
+                android:backgroundTint="@color/pink" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:text="Total Cost:"
+                    android:textColor="@color/grey"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/totalCost"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="P 750.00"
+                    android:textColor="@color/semiblack" />
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="15dp">
 
 
+                <Button
+                    android:id="@+id/btncheckout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@color/pink"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textAlignment="center"
+                    android:textColor="@color/semiwhite"
+                    android:textSize="16sp"
+                    app:cornerRadius="10dp" />
 
-        </androidx.core.widget.NestedScrollView>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/addIcon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="8dp"
+                        android:contentDescription="Add Icon"
+                        android:src="@drawable/buynowcart" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:text="Checkout"
+                        android:textColor="@color/semiwhite"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+            </FrameLayout>
+        </LinearLayout>
+
+
     </FrameLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
+
+</ScrollView>
