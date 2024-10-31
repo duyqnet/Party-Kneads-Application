@@ -50,12 +50,6 @@
                 android:textSize="16sp"
                 android:textColor="@color/semiblack"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sub Categories"
-                android:layout_marginTop="5dp"
-                android:fontFamily="@font/montserrat_semibold"/>
 
             <TextView
                 android:id="@+id/cakeSize"
@@ -76,7 +70,7 @@
                         android:layout_height="wrap_content"
                         android:text="Quantity:  "
                         android:textSize="14sp"
-                        android:fontFamily="@font/montserrat_medium"/>
+                        android:fontFamily="@font/montserrat_semibold"/>
 
                     <TextView
                         android:id="@+id/quantity"

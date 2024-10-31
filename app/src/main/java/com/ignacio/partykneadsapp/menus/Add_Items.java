@@ -87,9 +87,7 @@ public class Add_Items extends Fragment {
 
     private void hideKeyboard(View view) {
         InputMethodManager inputMethodManager = (InputMethodManager) view.getContext().getSystemService(INPUT_METHOD_SERVICE);
-        if (inputMethodManager != null) {
             inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
-        }
     }
 
     private void uploadImage() {

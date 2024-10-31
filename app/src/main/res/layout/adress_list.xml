@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/footerpink"
+        android:paddingVertical="10dp"
+        android:paddingHorizontal="20dp"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/txtUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Bianca Ignacio"
+                android:textSize="18sp"
+                android:fontFamily="@font/montserrat_bold"
+                />
+
+            <TextView
+                android:id="@+id/btnEdit"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:background="@drawable/edit"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/contactNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="09754011041"
+            android:inputType="number"
+            android:fontFamily="@font/montserrat_semibold"
+            android:textSize="14sp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/semiblack"/>
+
+        <TextView
+            android:id="@+id/location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_medium"
+            android:textSize="16sp"
+            android:textColor="@color/grey"
+            android:text="@string/address" />
+    </LinearLayout>
+
+</LinearLayout>

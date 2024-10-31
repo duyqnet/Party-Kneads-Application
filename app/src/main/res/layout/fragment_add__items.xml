@@ -9,15 +9,30 @@
     tools:context=".menus.Add_Items">
 
 
-    <ImageView
-        android:id="@+id/btnBack"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:src="@drawable/back"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginBottom="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintStart_toStartOf="parent" />
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/back_bg" />
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="35dp"
+            android:layout_marginRight="2dp"
+            android:layout_gravity="center"
+            android:src="@drawable/back"
+            />
+
+    </FrameLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -65,7 +80,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:backgroundTint="@color/footerpink"
             app:boxStrokeColor="@color/darkpink"
+            app:hintTextColor="@color/darkpink"
+            app:boxBackgroundColor="@color/footerpink"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout">
@@ -75,10 +93,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/montserrat_medium"
-                android:textColor="@color/grey"
+                android:textColor="@color/semiblack"
                 android:inputType="none"
                 android:layout_weight="1"
+                android:backgroundTint="@color/semiwhite"
                 app:hintTextColor="@color/pink"
+                android:popupBackground="@color/semiwhite"
+                android:textColorHint="@color/darkpink"
                 android:hint="Select Categories" />
 
         </com.google.android.material.textfield.TextInputLayout>

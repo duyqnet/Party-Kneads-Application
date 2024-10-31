@@ -105,7 +105,7 @@
 
                     <Button
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         android:backgroundTint="@color/semiwhite"
                         android:layout_marginVertical="20dp"
                         app:cornerRadius="10dp"
@@ -118,43 +118,13 @@
                         android:textColor="@color/semiblack"
                         app:strokeWidth="2dp" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/footerpink"
-                    android:layout_marginTop="20dp"
-                    android:paddingVertical="15dp"
-                    android:paddingHorizontal="20dp"
-                    android:orientation="vertical" >
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal" >
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Address"
-                            android:textSize="18sp"
-                            android:fontFamily="@font/montserrat_bold"
-                            android:layout_marginBottom="10dp"/>
-
-                        <TextView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:background="@drawable/edit"/>
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat_medium"
-                        android:textSize="16sp"
-                        android:text="@string/address" />
-
-                </LinearLayout>
+                       <androidx.recyclerview.widget.RecyclerView
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           tools:listitem="@layout/adress_list"
+                           android:layout_gravity="center"
+                           tools:itemCount="1">
+                       </androidx.recyclerview.widget.RecyclerView>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -251,19 +221,48 @@
                         android:text="P 750.00" />
                 </LinearLayout>
 
-                <Button
-                    android:id="@+id/btncheckout"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:backgroundTint="@color/pink"
-                    app:cornerRadius="20dp"
-                    android:text="Checkout"
-                    android:textAlignment="center"
-                    android:drawableLeft="@drawable/buynowcart"
-                    android:fontFamily="@font/montserrat_medium"
-                    android:textColor="@color/white" />
+                    android:layout_height="55dp"
+                    android:layout_marginTop="15dp">
 
+
+                    <Button
+                        android:id="@+id/btncheckout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/pink"
+                        app:cornerRadius="10dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/semiwhite"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:id="@+id/addIcon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/buynowcart"
+                            android:layout_gravity="center"
+                            android:contentDescription="Add Icon"
+                            android:layout_marginEnd="8dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:text="Checkout"
+                            android:layout_gravity="center"
+                            android:textColor="@color/semiwhite"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                </FrameLayout>
             </LinearLayout>
 
 
