@@ -74,14 +74,14 @@ public class CheckoutFragment extends Fragment {
         // Retrieve selected items from arguments if provided
         selectedItems = getArguments() != null ? getArguments().getParcelableArrayList("selectedItems") : new ArrayList<>();
 
-
+        recyclerView.setHasFixedSize(true);
         // Initialize CustomLinearLayoutManager and set it to the RecyclerView
-        layoutManager = new CustomGridLayoutManager(getContext()) {
-            @Override
-            public boolean canScrollVertically() {
-                return false;
-            }
-        };
+//        layoutManager = new CustomGridLayoutManager(getContext()) {
+//            @Override
+//            public boolean canScrollVertically() {
+//                return false;
+//            }
+//        };
 
         // Log received selected items for debugging
         if (selectedItems != null && !selectedItems.isEmpty()) {
